@@ -50,4 +50,5 @@ To run this repository locally on your machine:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/michellemusse12-create/fitlink-ve-firm-website.git](https://github.com/michellemusse12-create/fitlink-ve-firm-website.git)
+   git clone https://github.com/michellemusse12-create/fitlink-ve-firm-website.git
+   
