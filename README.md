@@ -1,4 +1,5 @@
-# FitLink — Your Size, Simplified.
+# FitLink
+## Your Size, Simplified.
 
 > **Virtual Enterprises (VE) Official Presentation & Web Application Prototype**
 
