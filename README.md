@@ -5,7 +5,7 @@
 
 ---
 
-### 📌 System Overview
+###  System Overview
 
 FitLink is a Virtual Enterprises startup designed to eliminate online clothing sizing guesswork and return cycles. The platform combines a 3D body-scanning interface with customized fit parameters—such as matching footwear and orthotic insoles for foot arch pain—to recommend precise gear based on user measurements.
 
@@ -18,7 +18,7 @@ FitLink is a Virtual Enterprises startup designed to eliminate online clothing s
 
 ---
 
-### ⚡ Primary Features
+###  Primary Features
 
 1. **3D Viewport Simulation**
    * Viewfinder interface featuring animated alignment target lines.
@@ -31,7 +31,7 @@ FitLink is a Virtual Enterprises startup designed to eliminate online clothing s
 
 ---
 
-### 🎨 Brand Palette & Design System
+###  Brand Palette & Design System
 
 | Shade | Hex Code | Applied Scope |
 | :--- | :--- | :--- |
@@ -44,7 +44,7 @@ FitLink is a Virtual Enterprises startup designed to eliminate online clothing s
 
 ---
 
-### 🛠️ Local Development Setup
+###  Local Development Setup
 
 To run this repository locally on your machine:
 
