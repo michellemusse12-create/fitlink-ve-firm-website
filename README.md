@@ -18,7 +18,7 @@ FitLink is a Virtual Enterprises startup designed to eliminate online clothing s
 
 ---
 
-###  Primary Features
+###  Primary Website Features
 
 1. **3D Viewport Simulation**
    * Viewfinder interface featuring animated alignment target lines.
