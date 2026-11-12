@@ -233,6 +233,14 @@
   </style>
 </head>
 <body>
+  <svg aria-hidden="true" class="hidden">
+    <symbol id="anatomical-body-outline" viewBox="0 0 220 380">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6">
+        <path d="M98 60C95 54 94 49 95 43C91 41 91 37 94 34L94 27C94 14 100 8 110 8C120 8 126 14 126 27L126 34C129 37 129 41 125 43C126 49 125 54 122 60"/>
+        <path d="M98 60C91 66 82 67 75 70C64 74 59 83 58 97L56 119C55 133 51 148 47 162L43 181C42 187 39 192 35 197L30 202C27 205 29 209 32 208L38 204L32 218C30 222 34 224 37 220L43 208L39 225C38 229 42 231 44 226L49 209L48 224C48 228 52 229 53 224L55 207C59 200 60 194 60 188L64 169C68 156 73 143 75 130L79 106L80 145C80 155 77 165 75 175C74 183 77 189 81 193L79 207C77 220 72 239 70 256L66 295C64 311 65 328 67 340C68 347 64 353 61 357C58 362 62 366 68 366L74 365C80 363 82 359 79 355C76 350 78 345 80 339C84 326 87 313 87 299L87 282C88 269 91 258 92 246L95 216C96 203 96 191 96 177L96 142C96 129 99 118 101 108C103 98 106 91 110 91C114 91 117 98 119 108C121 118 124 129 124 142L124 177C124 191 124 203 125 216L128 246C129 258 132 269 133 282L133 299C133 313 136 326 140 339C142 345 144 350 141 355C138 359 140 363 146 365L152 366C158 366 162 362 159 357C156 353 152 347 153 340C155 328 156 311 154 295L150 256C148 239 143 220 141 207L139 193C143 189 146 183 145 175C143 164 140 155 138 148L141 106L145 130C147 143 152 156 156 169L160 188C160 194 161 200 165 207L167 224C168 229 172 228 172 224L171 209L176 225C178 230 182 228 180 223L177 207L183 220C185 224 189 222 187 218L181 204L187 208C191 210 193 206 189 202L183 197C179 192 176 187 175 181L171 162C167 148 163 133 162 119L160 97C159 83 154 74 143 70C135 67 127 66 122 60"/>
+      </g>
+    </symbol>
+  </svg>
   <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/60 bg-paper/75 backdrop-blur-xl">
     <nav class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
       <a href="#home" class="group flex items-center gap-2.5" aria-label="FitLink home">
@@ -305,12 +313,10 @@
                 <div class="absolute h-[60%] w-[54%] rounded-[48%] border border-bright/40"></div>
                 <div class="absolute h-[44%] w-[40%] rounded-[48%] border border-bright/50"></div>
                 <div class="absolute h-[28%] w-[26%] rounded-[48%] border border-electric/60"></div>
-                <svg class="relative z-10 h-full w-auto max-w-full drop-shadow-[0_14px_20px_rgba(0,75,251,.14)]" viewBox="0 0 220 380" fill="none" aria-label="Anatomical body outline illustration" role="img">
-                  <circle cx="110" cy="48" r="25" fill="#BCE0FD" stroke="#2289FD" stroke-width="1.5"/>
-                  <path d="M98 76C96 82 92 85 87 86C77 86 71 92 67 102L47 147C43 157 47 166 57 170L68 174L58 202C54 213 59 222 69 225C77 228 84 222 88 212L98 184C94 177 89 168 84 157C85 174 83 190 78 207L73 241L65 342C64 356 72 365 84 365H96L110 258L124 365H136C148 365 156 356 155 342L147 241L142 207C137 190 135 174 136 157C131 168 126 177 122 184L132 212C136 222 143 228 151 225C161 222 166 213 162 202L152 174L163 170C173 166 177 157 173 147L153 102C149 92 143 86 133 86C128 85 124 82 122 76C120 83 117 86 110 86C103 86 100 83 98 76Z" fill="url(#bodyFill)" stroke="#2289FD" stroke-width="2" stroke-linejoin="round"/>
+                <svg class="relative z-10 h-full w-auto max-w-full text-[#2289FD] drop-shadow-[0_14px_20px_rgba(0,75,251,.14)]" viewBox="0 0 220 380" fill="none" aria-label="Anatomical body outline illustration" role="img">
+                  <use href="#anatomical-body-outline"></use>
                   <path d="M110 77V250M71 170L109 180L149 170M76 237H144" stroke="#004BFB" stroke-opacity=".65" stroke-width="1.5" stroke-dasharray="4 5"/>
                   <circle cx="110" cy="180" r="4" fill="#004BFB"/><circle cx="76" cy="237" r="4" fill="#2289FD"/><circle cx="144" cy="237" r="4" fill="#2289FD"/>
-                  <defs><linearGradient id="bodyFill" x1="58" y1="80" x2="165" y2="360" gradientUnits="userSpaceOnUse"><stop stop-color="#FDFDFD" stop-opacity=".94"/><stop offset="1" stop-color="#BCE0FD" stop-opacity=".75"/></linearGradient></defs>
                 </svg>
                 <div class="scan-line absolute inset-x-5 top-1/2 z-20 h-px bg-electric shadow-[0_0_14px_3px_rgba(0,75,251,.38)]"></div>
                 <span class="absolute right-0 top-[33%] z-20 rounded-lg border border-white/80 bg-white/80 px-2.5 py-1.5 text-[10px] font-semibold text-electric shadow-sm backdrop-blur">shoulder fit</span>
@@ -494,9 +500,8 @@
               <span class="target-bracket target-bracket--tl"></span><span class="target-bracket target-bracket--tr"></span>
               <span class="target-bracket target-bracket--bl"></span><span class="target-bracket target-bracket--br"></span>
               <div class="scan-laser"></div>
-              <svg id="scan-silhouette" class="relative z-[2] h-64 w-40 opacity-75 drop-shadow-[0_8px_24px_rgba(6,73,245,.15)] transition-opacity sm:h-72 sm:w-44" viewBox="0 0 220 380" fill="none" aria-hidden="true">
-                <circle cx="110" cy="48" r="25" fill="#d9ecff" stroke="#4b9af7" stroke-width="2"/>
-                <path d="M98 76C96 82 92 85 87 86C77 86 71 92 67 102L47 147C43 157 47 166 57 170L68 174L58 202C54 213 59 222 69 225C77 228 84 222 88 212L98 184C94 177 89 168 84 157C85 174 83 190 78 207L73 241L65 342C64 356 72 365 84 365H96L110 258L124 365H136C148 365 156 356 155 342L147 241L142 207C137 190 135 174 136 157C131 168 126 177 122 184L132 212C136 222 143 228 151 225C161 222 166 213 162 202L152 174L163 170C173 166 177 157 173 147L153 102C149 92 143 86 133 86C128 85 124 82 122 76C120 83 117 86 110 86C103 86 100 83 98 76Z" fill="#a5d4ff" fill-opacity=".42" stroke="#438ff1" stroke-width="2" stroke-linejoin="round"/>
+              <svg id="scan-silhouette" class="relative z-[2] h-64 w-40 text-[#438ff1] opacity-75 drop-shadow-[0_8px_24px_rgba(6,73,245,.15)] transition-opacity sm:h-72 sm:w-44" viewBox="0 0 220 380" fill="none" aria-hidden="true">
+                <use href="#anatomical-body-outline"></use>
                 <path d="M110 77v173M71 170l38 10 40-10M76 237h68" stroke="#0649f5" stroke-opacity=".7" stroke-width="1.5" stroke-dasharray="4 5"/>
                 <circle cx="110" cy="180" r="4" fill="#0649f5"/><circle cx="76" cy="237" r="4" fill="#438ff1"/><circle cx="144" cy="237" r="4" fill="#438ff1"/>
               </svg>
