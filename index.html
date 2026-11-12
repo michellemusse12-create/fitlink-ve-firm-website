@@ -251,6 +251,14 @@
     footer .wave-divider--top { top: 0; }
     .wave-divider--blue { color: #f2f8ff; }
     .wave-divider--blue .wave-fill { fill: currentColor; }
+    .wave-header {
+      min-height: 120px;
+      background-color: #f8fbff;
+      background-image: url("./wave-header.png");
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-size: 100% 120px;
+    }
     .brand-mark { flex: none; color: var(--electric); }
     .brand-mark text { fill: currentColor; }
     .fitlink-logo { display: block; width: clamp(88px, 10vw, 112px); height: auto; max-height: 72px; object-fit: contain; }
@@ -295,8 +303,8 @@
       <image href="./scanner-body.png" x="30" y="0" width="160" height="380" preserveAspectRatio="none"/>
     </symbol>
   </svg>
-  <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/60 bg-paper/75 backdrop-blur-xl">
-    <nav class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
+  <header class="wave-header fixed inset-x-0 top-0 z-50">
+    <nav class="mx-auto flex h-[120px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
       <a href="#home" class="group flex items-center gap-2.5" aria-label="FitLink home">
         <img id="fitlink-logo-header" class="fitlink-logo transition-transform group-hover:scale-[1.02]" src="./fitlink-logo.png" alt="FitLink — Your Size, Simplified" />
       </a>
@@ -329,7 +337,7 @@
   </header>
 
   <main>
-    <section id="home" class="hero-glow relative isolate overflow-hidden pt-[76px]">
+    <section id="home" class="hero-glow relative isolate overflow-hidden pt-[120px]">
       <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-24 pt-6 sm:px-8 md:pb-32 lg:grid-cols-[1.02fr_.98fr] lg:gap-8">
         <div class="relative z-10 max-w-2xl">
           <h1 class="serif max-w-2xl text-[clamp(3.65rem,8vw,6.6rem)] font-bold leading-[.94] tracking-[-.055em] text-slate-950">
