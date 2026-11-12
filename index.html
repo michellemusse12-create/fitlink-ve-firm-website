@@ -142,8 +142,19 @@
       background:
         radial-gradient(ellipse at 50% 46%, rgba(116,191,253,.18), transparent 46%),
         linear-gradient(155deg, #f8fcff, #eaf3ff);
-      border: 1px solid rgba(6,73,245,.13);
+      border: 1px solid rgba(6,73,245,.22);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.9), 0 18px 42px rgba(6,73,245,.08);
       isolation: isolate;
+    }
+    .demo-viewfinder::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 12px;
+      border: 1px solid rgba(6,73,245,.16);
+      border-radius: 1rem;
+      box-shadow: inset 0 0 28px rgba(6,73,245,.035);
+      pointer-events: none;
     }
     .camera-preview {
       position: absolute;
@@ -181,14 +192,15 @@
     .target-bracket {
       position: absolute;
       z-index: 3;
-      width: 24px;
-      height: 24px;
-      border-color: rgba(6,73,245,.7);
+      width: 30px;
+      height: 30px;
+      color: rgba(6,73,245,.82);
+      filter: drop-shadow(0 0 3px rgba(6,73,245,.2));
     }
-    .target-bracket--tl { top: 16px; left: 16px; border-top: 2px solid; border-left: 2px solid; }
-    .target-bracket--tr { top: 16px; right: 16px; border-top: 2px solid; border-right: 2px solid; }
-    .target-bracket--bl { bottom: 16px; left: 16px; border-bottom: 2px solid; border-left: 2px solid; }
-    .target-bracket--br { right: 16px; bottom: 16px; border-right: 2px solid; border-bottom: 2px solid; }
+    .target-bracket--tl { top: 20px; left: 20px; border-top: 2px solid; border-left: 2px solid; border-top-left-radius: 5px; }
+    .target-bracket--tr { top: 20px; right: 20px; border-top: 2px solid; border-right: 2px solid; border-top-right-radius: 5px; }
+    .target-bracket--bl { bottom: 20px; left: 20px; border-bottom: 2px solid; border-left: 2px solid; border-bottom-left-radius: 5px; }
+    .target-bracket--br { right: 20px; bottom: 20px; border-right: 2px solid; border-bottom: 2px solid; border-bottom-right-radius: 5px; }
     .scan-laser {
       position: absolute;
       z-index: 4;
