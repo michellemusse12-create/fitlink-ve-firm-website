@@ -96,6 +96,11 @@
       border-radius: 2rem;
       pointer-events: none;
     }
+    .hero-profile-badge {
+      border: 1px solid rgba(6,73,245,.18);
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 4px 14px rgba(6,73,245,.08), inset 0 1px rgba(255,255,255,.9);
+    }
     .hero-grid {
       background-image: linear-gradient(rgba(6,73,245,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(6,73,245,.055) 1px, transparent 1px);
       background-size: 32px 32px;
@@ -347,7 +352,7 @@
           <div class="hero-preview-card relative w-full overflow-hidden rounded-[2.4rem] border border-white/80 bg-gradient-to-br from-white/80 via-blue-50/80 to-ice/65 p-5 shadow-[0_34px_100px_rgba(0,75,251,.14)] sm:p-8">
             <div class="hero-grid absolute inset-0 opacity-60"></div>
             <div class="absolute inset-0 opacity-60" style="background:radial-gradient(circle at 50% 45%,rgba(89,178,253,.30),transparent 40%)"></div>
-            <div class="absolute left-6 top-6 flex items-center gap-2 rounded-full border border-white/80 bg-white/65 px-3 py-2 text-[10px] font-semibold uppercase tracking-[.15em] text-slate-500 backdrop-blur">
+            <div class="hero-profile-badge absolute left-6 top-6 flex items-center gap-2 rounded-full px-3 py-2 text-[10px] font-semibold uppercase tracking-[.15em] text-slate-600 backdrop-blur">
               <span class="h-1.5 w-1.5 rounded-full bg-electric"></span> Fit profile
             </div>
             <div class="hero-body absolute inset-x-0 z-10 flex justify-center">
