@@ -66,39 +66,10 @@
         linear-gradient(180deg, #fff 0%, #f5faff 100%);
       position: relative;
     }
-    .hero-glow::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.25));
-      pointer-events: none;
-    }
-    .hero-glow::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 56%;
-      width: min(42vw, 560px);
-      height: min(30vw, 240px);
-      transform: translate(-50%, -50%);
-      background: linear-gradient(180deg, rgba(0,82,255,0.06), transparent 75%);
-      border: 1px solid rgba(0,82,255,0.1);
-      border-radius: 50% 50% 46% 54% / 55% 53% 47% 45%;
-      pointer-events: none;
-    }
     .glass {
       background: #fff;
       border: 1px solid var(--line);
       box-shadow: 0 18px 56px rgba(13, 61, 143, .08);
-    }
-    .grid-texture {
-      background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
     }
     .card-lift {
       transition: border-color .2s ease, transform .2s ease, background-color .2s ease;
@@ -299,7 +270,6 @@
 
   <main>
     <section id="home" class="hero-glow relative isolate overflow-hidden pt-32 sm:pt-40">
-      <div class="grid-texture pointer-events-none absolute inset-0 -z-10 opacity-60"></div>
       <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-24 pt-10 sm:px-8 md:pb-32 lg:grid-cols-[1.02fr_.98fr] lg:gap-8">
         <div class="relative z-10 max-w-2xl">
           <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/70 px-3.5 py-2 text-xs font-semibold tracking-wide text-electric shadow-sm backdrop-blur">
@@ -320,14 +290,6 @@
               Meet FitLink <i data-lucide="arrow-down" class="h-4 w-4 text-electric"></i>
             </a>
           </div>
-          <div class="mt-10 flex items-center gap-3 text-sm text-slate-500">
-            <div class="flex -space-x-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-ice text-[10px] font-bold text-electric">FL</span>
-              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-blue-100"><i data-lucide="heart" class="h-3.5 w-3.5 text-electric"></i></span>
-              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-sky-100"><i data-lucide="sparkles" class="h-3.5 w-3.5 text-electric"></i></span>
-            </div>
-            <span>Find a fit that feels right.</span>
-          </div>
         </div>
 
         <div class="relative mx-auto w-full max-w-[540px]">
@@ -337,9 +299,6 @@
             <div class="absolute inset-0 opacity-60" style="background:radial-gradient(circle at 50% 45%,rgba(89,178,253,.30),transparent 40%)"></div>
             <div class="absolute left-6 top-6 flex items-center gap-2 rounded-full border border-white/80 bg-white/65 px-3 py-2 text-[10px] font-semibold uppercase tracking-[.15em] text-slate-500 backdrop-blur">
               <span class="h-1.5 w-1.5 rounded-full bg-electric"></span> Fit profile
-            </div>
-            <div class="absolute right-6 top-6 grid h-9 w-9 place-items-center rounded-full border border-white/80 bg-white/65 text-slate-600 backdrop-blur">
-              <i data-lucide="more-horizontal" class="h-5 w-5"></i>
             </div>
             <div class="hero-body absolute inset-x-0 z-10 flex justify-center">
               <div class="relative flex h-full w-[46%] items-center justify-center">
@@ -374,9 +333,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="relative z-10 mx-auto mb-16 flex max-w-7xl items-center justify-between border-t border-blue-100/70 bg-white/80 px-5 py-5 text-[10px] font-semibold uppercase tracking-[.2em] text-slate-400 sm:px-8">
-        <span>Personalized fit</span><span class="hidden sm:inline">Built around your needs</span><span>Made for real life</span>
       </div>
       <div class="wave-divider" aria-hidden="true">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
