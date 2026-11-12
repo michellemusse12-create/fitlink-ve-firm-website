@@ -196,8 +196,8 @@
     .wave-divider--blue .wave-fill { fill: currentColor; }
     .brand-mark { flex: none; color: var(--electric); }
     .brand-mark text { fill: currentColor; }
-    .fitlink-logo { display: block; width: clamp(88px, 10vw, 112px); height: 72px; }
-    .fitlink-logo-footer { width: 176px; height: 118px; }
+    .fitlink-logo { display: block; width: clamp(88px, 10vw, 112px); height: auto; max-height: 72px; object-fit: contain; }
+    .fitlink-logo-footer { width: 176px; max-height: 118px; }
     .contact-icon {
       border-radius: 9999px;
       background: var(--electric);
@@ -233,21 +233,10 @@
   </style>
 </head>
 <body>
-  <svg aria-hidden="true" class="hidden">
-    <symbol id="fitlink-brand" viewBox="0 0 1024 683">
-      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="24">
-        <path d="M383 114V78a29 29 0 0 1 29-29h63M768 114V78a29 29 0 0 0-29-29h-63M383 211v36a29 29 0 0 0 29 29h63M768 211v36a29 29 0 0 1-29 29h-63"/>
-      </g>
-      <path fill="currentColor" d="M422 239 497 104c19-35 47-53 89-53h147c-23 42-46 72-82 72H552c-17 0-29 8-38 24l-51 92Z"/>
-      <path fill="currentColor" d="M555 204c18-33 42-49 76-49h91c-22 40-44 66-80 66h-111Z"/>
-      <text x="512" y="449" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="185" font-style="italic" font-weight="900" letter-spacing="-13">FitLink</text>
-      <text x="512" y="551" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="800" letter-spacing="17">YOUR SIZE, SIMPLIFIED.</text>
-    </symbol>
-  </svg>
   <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/60 bg-paper/75 backdrop-blur-xl">
     <nav class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
       <a href="#home" class="group flex items-center gap-2.5" aria-label="FitLink home">
-        <svg id="fitlink-logo-header" class="brand-mark fitlink-logo transition-transform group-hover:scale-[1.02]" role="img" aria-label="FitLink — Your Size, Simplified"><use href="#fitlink-brand"></use></svg>
+        <img id="fitlink-logo-header" class="fitlink-logo transition-transform group-hover:scale-[1.02]" src="./fitlink-logo.png" alt="FitLink — Your Size, Simplified" />
       </a>
 
       <div class="hidden items-center gap-9 md:flex">
@@ -629,7 +618,7 @@
     <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[1fr_1.4fr] md:pb-16 md:pt-20">
       <div>
         <a href="#home" class="inline-flex items-center gap-2.5" aria-label="FitLink home">
-          <svg id="fitlink-logo-footer" class="brand-mark fitlink-logo fitlink-logo-footer" role="img" aria-label="FitLink — Your Size, Simplified"><use href="#fitlink-brand"></use></svg>
+          <img id="fitlink-logo-footer" class="fitlink-logo fitlink-logo-footer" src="./fitlink-logo.png" alt="FitLink — Your Size, Simplified" />
         </a>
         <p class="mt-4 max-w-xs text-sm leading-6 text-slate-500">Your Size, Simplified. Clothes and gear that feel more like you.</p>
       </div>
