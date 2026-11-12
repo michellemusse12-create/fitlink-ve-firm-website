@@ -96,6 +96,43 @@
       border-radius: 2rem;
       pointer-events: none;
     }
+    .hero-grid {
+      background-image: linear-gradient(rgba(6,73,245,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(6,73,245,.055) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .hero-callout {
+      position: absolute;
+      z-index: 30;
+      white-space: nowrap;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: .55rem;
+      background: rgba(255,255,255,.88);
+      padding: .38rem .55rem;
+      color: var(--electric);
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1.2;
+      box-shadow: 0 2px 8px rgba(15,23,42,.06);
+      backdrop-filter: blur(8px);
+    }
+    .hero-callout-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .hero-callout-lines path {
+      fill: none;
+      stroke: var(--electric);
+      stroke-opacity: .55;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
     .hero-body { top: 12%; bottom: 43%; }
     .typed-title-word { display: inline-block; white-space: nowrap; }
     .typed-title-char { display: inline-block; opacity: 0; transition: opacity .04s linear; }
@@ -237,7 +274,7 @@
     <symbol id="anatomical-body-outline" viewBox="0 0 220 380">
       <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6">
         <path d="M98 60C95 54 94 49 95 43C91 41 91 37 94 34L94 27C94 14 100 8 110 8C120 8 126 14 126 27L126 34C129 37 129 41 125 43C126 49 125 54 122 60"/>
-        <path d="M98 60C91 66 82 67 75 70C64 74 59 83 58 97L56 119C55 133 51 148 47 162L43 181C42 187 39 192 35 197L30 202C27 205 29 209 32 208L38 204L32 218C30 222 34 224 37 220L43 208L39 225C38 229 42 231 44 226L49 209L48 224C48 228 52 229 53 224L55 207C59 200 60 194 60 188L64 169C68 156 73 143 75 130L79 106L80 145C80 155 77 165 75 175C74 183 77 189 81 193L79 207C77 220 72 239 70 256L66 295C64 311 65 328 67 340C68 347 64 353 61 357C58 362 62 366 68 366L74 365C80 363 82 359 79 355C76 350 78 345 80 339C84 326 87 313 87 299L87 282C88 269 91 258 92 246L95 216C96 203 96 191 96 177L96 142C96 129 99 118 101 108C103 98 106 91 110 91C114 91 117 98 119 108C121 118 124 129 124 142L124 177C124 191 124 203 125 216L128 246C129 258 132 269 133 282L133 299C133 313 136 326 140 339C142 345 144 350 141 355C138 359 140 363 146 365L152 366C158 366 162 362 159 357C156 353 152 347 153 340C155 328 156 311 154 295L150 256C148 239 143 220 141 207L139 193C143 189 146 183 145 175C143 164 140 155 138 148L141 106L145 130C147 143 152 156 156 169L160 188C160 194 161 200 165 207L167 224C168 229 172 228 172 224L171 209L176 225C178 230 182 228 180 223L177 207L183 220C185 224 189 222 187 218L181 204L187 208C191 210 193 206 189 202L183 197C179 192 176 187 175 181L171 162C167 148 163 133 162 119L160 97C159 83 154 74 143 70C135 67 127 66 122 60"/>
+        <path d="M122 60C128 65 136 67 144 71C154 75 159 84 160 97L162 121C163 135 168 150 172 164L176 180C177 186 180 192 184 197L190 203C193 206 190 210 187 208L182 204L188 218C190 222 186 225 183 220L177 207L181 225C182 229 178 231 176 226L171 208L171 224C171 228 167 229 166 224L164 207C160 200 159 194 159 188L155 170C151 157 146 144 144 130L141 106C140 123 141 139 143 153C146 170 150 187 150 202L150 218C150 229 154 241 156 255L160 285C162 302 160 320 157 336C156 344 157 350 162 357C166 363 162 367 156 367L148 366C142 365 139 361 142 355C145 350 142 343 139 336C135 323 133 309 133 295L133 281C132 265 128 250 123 238C118 229 115 224 110 224C105 224 102 229 97 238C92 250 88 265 87 281L87 295C87 309 85 323 81 336C78 343 75 350 78 355C81 361 78 365 72 366L64 367C58 367 54 363 58 357C63 350 64 344 63 336C60 320 58 302 60 285L64 255C66 241 70 229 70 218L70 202C70 187 74 170 77 153C79 139 80 123 79 106L76 130C74 144 69 157 65 170L61 188C61 194 60 200 56 207L54 224C53 229 49 228 49 224L50 208L45 226C43 231 39 229 40 225L43 207L37 220C34 225 30 222 32 218L38 204L33 208C30 210 27 206 30 203L36 197C40 192 43 187 44 181L48 164C52 150 56 135 57 121L59 97C60 84 65 76 75 71C84 67 92 65 98 60"/>
       </g>
     </symbol>
   </svg>
@@ -302,6 +339,7 @@
           <div class="absolute -left-12 top-16 h-40 w-40 rounded-full bg-sky/30 blur-3xl"></div>
           <div class="absolute -right-10 bottom-4 h-52 w-52 rounded-full bg-electric/15 blur-3xl"></div>
           <div class="hero-preview-card relative w-full overflow-hidden rounded-[2.4rem] border border-white/80 bg-gradient-to-br from-white/80 via-blue-50/80 to-ice/65 p-5 shadow-[0_34px_100px_rgba(0,75,251,.14)] sm:p-8">
+            <div class="hero-grid absolute inset-0 opacity-60"></div>
             <div class="absolute inset-0 opacity-60" style="background:radial-gradient(circle at 50% 45%,rgba(89,178,253,.30),transparent 40%)"></div>
             <div class="absolute left-6 top-6 flex items-center gap-2 rounded-full border border-white/80 bg-white/65 px-3 py-2 text-[10px] font-semibold uppercase tracking-[.15em] text-slate-500 backdrop-blur">
               <span class="h-1.5 w-1.5 rounded-full bg-electric"></span> Fit profile
@@ -317,11 +355,16 @@
                   <use href="#anatomical-body-outline"></use>
                   <path d="M110 77V250M71 170L109 180L149 170M76 237H144" stroke="#004BFB" stroke-opacity=".65" stroke-width="1.5" stroke-dasharray="4 5"/>
                   <circle cx="110" cy="180" r="4" fill="#004BFB"/><circle cx="76" cy="237" r="4" fill="#2289FD"/><circle cx="144" cy="237" r="4" fill="#2289FD"/>
+                  <circle cx="79" cy="74" r="4" fill="#004BFB" stroke="white" stroke-width="1.8"/><circle cx="141" cy="74" r="4" fill="#004BFB" stroke="white" stroke-width="1.8"/><circle cx="153" cy="361" r="4" fill="#004BFB" stroke="white" stroke-width="1.8"/>
                 </svg>
                 <div class="scan-line absolute inset-x-5 top-1/2 z-20 h-px bg-electric shadow-[0_0_14px_3px_rgba(0,75,251,.38)]"></div>
-                <span class="absolute right-0 top-[33%] z-20 rounded-lg border border-white/80 bg-white/80 px-2.5 py-1.5 text-[10px] font-semibold text-electric shadow-sm backdrop-blur">shoulder fit</span>
-                <span class="absolute bottom-[24%] left-[-10px] z-20 rounded-lg border border-white/80 bg-white/80 px-2.5 py-1.5 text-[10px] font-semibold text-electric shadow-sm backdrop-blur">foot comfort</span>
               </div>
+              <svg class="hero-callout-lines" viewBox="0 0 1000 460" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M462 90 420 78H230M538 90 580 78H770M552 437 470 360H230"/>
+              </svg>
+              <span class="hero-callout left-[3%] top-[12%]">shoulder fit</span>
+              <span class="hero-callout right-[3%] top-[12%]">shoulder fit</span>
+              <span class="hero-callout left-[3%] top-[70%]">foot comfort</span>
             </div>
             <div class="absolute inset-x-5 bottom-5 sm:inset-x-7 sm:bottom-7">
               <div class="glass relative z-30 rounded-2xl p-4 sm:p-5" style="background:rgba(253,253,253,.97)">
