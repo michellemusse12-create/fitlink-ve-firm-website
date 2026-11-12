@@ -21,8 +21,8 @@
             paper: "#FDFDFD"
           },
           fontFamily: {
-            display: ["'Times New Roman'", "Times", "serif"],
-            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+            display: ["'DM Sans'", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            sans: ["'DM Sans'", "Inter", "ui-sans-serif", "system-ui", "sans-serif"]
           },
           boxShadow: {
             glow: "0 18px 70px rgba(0, 75, 251, .20)"
@@ -33,49 +33,98 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
-      --electric: #004BFB;
-      --bright: #2289FD;
-      --sky: #59B2FD;
-      --soft: #74BFFD;
-      --ice: #BCE0FD;
-      --paper: #FDFDFD;
+      --electric: #0649F5;
+      --electric-strong: #0638C8;
+      --electric-soft: #EAF2FF;
+      --paper: #FFFFFF;
+      --paper-alt: #F4F7FB;
+      --ink: #0F172A;
+      --ink-soft: #475569;
+      --line: #E2E8F0;
+      --grid: rgba(0, 82, 255, 0.08);
       color-scheme: light;
     }
 
     html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
     body {
       margin: 0;
-      background: var(--paper);
-      color: #101a2d;
-      font-family: "DM Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+      background:
+        linear-gradient(to bottom, rgba(244, 247, 251, 0.75), rgba(255, 255, 255, 0.96)),
+        var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
-    .serif { font-family: "Times New Roman", Times, serif; }
+    .serif { font-family: "DM Sans", "Segoe UI", sans-serif; }
     .hero-glow {
       background:
-        radial-gradient(ellipse at 75% 38%, rgba(89, 178, 253, .25), transparent 36%),
-        radial-gradient(ellipse at 60% 78%, rgba(0, 75, 251, .12), transparent 34%),
-        radial-gradient(ellipse at 5% 10%, rgba(188, 224, 253, .42), transparent 35%);
+        radial-gradient(ellipse at 78% 16%, rgba(116,191,253,.28), transparent 34%),
+        linear-gradient(180deg, #fff 0%, #f5faff 100%);
+      position: relative;
+    }
+    .hero-glow::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.25));
+      pointer-events: none;
+    }
+    .hero-glow::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 56%;
+      width: min(42vw, 560px);
+      height: min(30vw, 240px);
+      transform: translate(-50%, -50%);
+      background: linear-gradient(180deg, rgba(0,82,255,0.06), transparent 75%);
+      border: 1px solid rgba(0,82,255,0.1);
+      border-radius: 50% 50% 46% 54% / 55% 53% 47% 45%;
+      pointer-events: none;
     }
     .glass {
-      background: rgba(253, 253, 253, .68);
-      border: 1px solid rgba(255, 255, 255, .86);
-      box-shadow: 0 24px 80px rgba(27, 74, 145, .10), inset 0 1px 0 rgba(255, 255, 255, .95);
-      -webkit-backdrop-filter: blur(22px);
-      backdrop-filter: blur(22px);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 56px rgba(13, 61, 143, .08);
     }
     .grid-texture {
-      background-image: linear-gradient(rgba(0, 75, 251, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 75, 251, .035) 1px, transparent 1px);
+      background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
       background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, black, transparent 80%);
+      mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
     }
-    .card-lift { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
-    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0, 75, 251, .12); border-color: rgba(89, 178, 253, .52); }
-    .hero-preview-card { aspect-ratio: 1 / 1.02; }
+    .card-lift {
+      transition: border-color .2s ease, transform .2s ease, background-color .2s ease;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .card-lift:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 82, 255, 0.35);
+      box-shadow: 0 14px 40px rgba(13, 61, 143, .08);
+    }
+    .hero-preview-card {
+      aspect-ratio: 1 / 1.02;
+      background: linear-gradient(180deg, #fff, #f5f9ff);
+      border: 1px solid rgba(0,82,255,0.12);
+      box-shadow: 0 24px 70px rgba(6, 73, 245, .12);
+      position: relative;
+    }
+    .hero-preview-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px 18px 18px 18px;
+      border: 1px solid rgba(0,82,255,0.08);
+      border-radius: 2rem;
+      pointer-events: none;
+    }
     .hero-body { top: 12%; bottom: 43%; }
     .typed-title-word { display: inline-block; white-space: nowrap; }
     .typed-title-char { display: inline-block; opacity: 0; transition: opacity .04s linear; }
@@ -83,19 +132,122 @@
     .scan-line { animation: scan 3.2s ease-in-out infinite; }
     .demo-viewfinder {
       background:
-        radial-gradient(ellipse at 50% 42%, rgba(34, 137, 253, .2), transparent 46%),
-        linear-gradient(145deg, #0d1b35, #081225 70%);
+        radial-gradient(ellipse at 50% 46%, rgba(116,191,253,.18), transparent 46%),
+        linear-gradient(155deg, #f8fcff, #eaf3ff);
+      border: 1px solid rgba(6,73,245,.13);
+      isolation: isolate;
+    }
+    .camera-preview {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+    .camera-preview.is-active { opacity: .8; }
+    .camera-active #scan-silhouette { opacity: .08; }
+    .camera-overlay {
+      position: absolute;
+      inset: 11% 22%;
+      border: 1px solid rgba(6,73,245,.14);
+      border-radius: 48% 48% 42% 42% / 25% 25% 60% 60%;
+      box-shadow: 0 0 0 18px rgba(6,73,245,.035), 0 0 0 42px rgba(6,73,245,.025);
+      pointer-events: none;
+    }
+    .camera-overlay::before,
+    .camera-overlay::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 70%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(6,73,245,.17);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .camera-overlay::after { width: 46%; }
+    .target-bracket {
+      position: absolute;
+      z-index: 3;
+      width: 24px;
+      height: 24px;
+      border-color: rgba(6,73,245,.7);
+    }
+    .target-bracket--tl { top: 16px; left: 16px; border-top: 2px solid; border-left: 2px solid; }
+    .target-bracket--tr { top: 16px; right: 16px; border-top: 2px solid; border-right: 2px solid; }
+    .target-bracket--bl { bottom: 16px; left: 16px; border-bottom: 2px solid; border-left: 2px solid; }
+    .target-bracket--br { right: 16px; bottom: 16px; border-right: 2px solid; border-bottom: 2px solid; }
+    .scan-laser {
+      position: absolute;
+      z-index: 4;
+      top: 15%;
+      right: 12%;
+      left: 12%;
+      height: 2px;
+      opacity: 0;
+      background: linear-gradient(90deg, transparent, rgba(6,73,245,.18) 12%, #0649f5 50%, rgba(6,73,245,.18) 88%, transparent);
+      box-shadow: 0 0 18px 3px rgba(6,73,245,.2);
+      pointer-events: none;
+    }
+    .is-scanning .scan-laser {
+      animation: camera-scan 1.5s ease-in-out infinite;
+    }
+    .is-scanning .camera-overlay {
+      animation: target-pulse 1.8s ease-in-out infinite;
     }
     .demo-scan-light {
       animation: demo-scan 2s ease-in-out forwards;
-      background: linear-gradient(90deg, transparent, rgba(89, 178, 253, .3) 18%, #59b2fd 50%, rgba(89, 178, 253, .3) 82%, transparent);
-      box-shadow: 0 0 22px 4px rgba(34, 137, 253, .58);
+      background: linear-gradient(90deg, transparent, rgba(0,82,255,0.18) 22%, rgba(0,82,255,0.9) 50%, rgba(0,82,255,0.18) 78%, transparent);
+      box-shadow: 0 0 18px 4px rgba(6,73,245,.28);
     }
     .float { animation: float 6s ease-in-out infinite; }
+    .wave-divider {
+      position: absolute;
+      right: 0;
+      bottom: -1px;
+      left: 0;
+      height: clamp(56px, 8vw, 112px);
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .wave-divider svg { display: block; width: 100%; height: 100%; }
+    .wave-divider--top {
+      top: -1px;
+      bottom: auto;
+      transform: rotate(180deg);
+    }
+    .brand-mark { flex: none; color: var(--electric); }
+    .brand-mark text { fill: currentColor; }
+    .contact-icon {
+      border-radius: 9999px;
+      background: var(--electric);
+      color: #fff;
+      transition: transform .2s ease, background-color .2s ease;
+    }
+    a:hover .contact-icon { transform: translateY(-2px); background: var(--electric-strong); }
+    .product-card { overflow: hidden; }
+    .product-artwork {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: contain;
+      background: #eef5ff;
+    }
+    .product-match {
+      border-radius: 9999px;
+      background: #eaf2ff;
+      color: #0649f5;
+    }
     @keyframes scan { 0%, 100% { transform: translateY(-62px); opacity: .35; } 50% { transform: translateY(62px); opacity: 1; } }
-    @keyframes demo-scan { 0% { top: 16%; opacity: .2; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 82%; opacity: .3; } }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes camera-scan { 0% { top: 15%; opacity: .2; } 15%, 85% { opacity: 1; } 100% { top: 84%; opacity: .25; } }
+    @keyframes target-pulse { 50% { box-shadow: 0 0 0 24px rgba(6,73,245,.04), 0 0 0 50px rgba(6,73,245,.025); } }
     @media (max-width: 639px) {
+      .camera-overlay { inset-inline: 16%; }
+      .product-artwork { height: 160px; }
       .hero-preview-card { aspect-ratio: 1 / 1.35; }
       .hero-body { bottom: 56%; }
     }
@@ -108,7 +260,14 @@
   <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/60 bg-paper/75 backdrop-blur-xl">
     <nav class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
       <a href="#home" class="group flex items-center gap-2.5" aria-label="FitLink home">
-        <img id="fitlink-logo-header" class="h-[66px] w-[76px] object-contain transition-transform group-hover:scale-[1.03]" alt="FitLink logo, Your Size, Simplified" />
+        <svg id="fitlink-logo-header" class="brand-mark h-14 w-[190px] transition-transform group-hover:scale-[1.02]" viewBox="0 0 360 112" role="img" aria-label="FitLink — Your Size, Simplified">
+          <g transform="translate(46 0) scale(.85 .45)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="8">
+            <path d="M111 12H97a10 10 0 0 0-10 10v12M230 34V22a10 10 0 0 0-10-10h-14M87 71v11a10 10 0 0 0 10 10h14M203 92h17a10 10 0 0 0 10-10V70"/>
+          </g>
+          <path transform="translate(46 0) scale(.85 .45)" fill="currentColor" d="M128 19h76l-11 17h-57l-9 13h52l-10 16h-52l-17 25H79l27-40 9-14c4-7 8-12 13-15Z"/>
+          <text x="180" y="77" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="41" font-style="italic" font-weight="800" letter-spacing="-2.5">FitLink</text>
+          <text x="180" y="104" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" font-weight="800" letter-spacing="4">YOUR SIZE, SIMPLIFIED.</text>
+        </svg>
       </a>
 
       <div class="hidden items-center gap-9 md:flex">
@@ -216,8 +375,16 @@
           </div>
         </div>
       </div>
-      <div class="mx-auto flex max-w-7xl items-center justify-between border-t border-blue-100/70 px-5 py-5 text-[10px] font-semibold uppercase tracking-[.2em] text-slate-400 sm:px-8">
+      <div class="relative z-10 mx-auto mb-16 flex max-w-7xl items-center justify-between border-t border-blue-100/70 bg-white/80 px-5 py-5 text-[10px] font-semibold uppercase tracking-[.2em] text-slate-400 sm:px-8">
         <span>Personalized fit</span><span class="hidden sm:inline">Built around your needs</span><span>Made for real life</span>
+      </div>
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path fill="#d8edff" fill-opacity=".72" d="M0 39c181 67 289 33 438 17 157-18 246 35 404 35 204 0 339-93 598-43v72H0Z"/>
+          <path fill="#70bbfa" fill-opacity=".4" d="M0 63c164 44 257-20 435-12 185 8 268 53 447 41 212-14 337-63 558-18v46H0Z"/>
+          <path fill="#fff" d="M0 77c177 33 288-17 458-8 177 9 271 47 446 33 208-17 338-54 536-15v53H0Z"/>
+          <path d="M0 64c164 43 257-20 435-12 185 8 268 53 447 41 212-14 337-63 558-18" fill="none" stroke="#0649f5" stroke-width="3"/>
+        </svg>
       </div>
     </section>
 
@@ -236,8 +403,8 @@
             <div class="relative flex h-full flex-col justify-between sm:flex-row sm:items-center">
               <div class="max-w-sm">
                 <span class="mb-5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-electric text-xs font-bold text-white">01</span>
-                <h3 class="serif text-2xl font-bold text-slate-950">Instant 3D Body Scan</h3>
-                <p class="mt-3 text-sm leading-6 text-slate-600">A guided body scan helps you get a better sense of your measurements before choosing a size.</p>
+                <h3 class="serif text-2xl font-bold text-slate-950">Camera-guided Scan Preview</h3>
+                <p class="mt-3 text-sm leading-6 text-slate-600">A short camera preview introduces your fit profile. Demo measurements are illustrative estimates, not camera-derived.</p>
               </div>
               <div class="relative mt-6 flex h-28 w-36 shrink-0 items-center justify-center sm:mt-0">
                 <div class="absolute h-24 w-24 rounded-full border border-bright/20"></div><div class="absolute h-16 w-16 rounded-full border border-bright/30"></div>
@@ -279,12 +446,20 @@
     </section>
 
     <section id="fit-demo" class="hero-glow relative overflow-hidden py-24 sm:py-32">
+      <div class="wave-divider wave-divider--top" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path fill="#d8edff" fill-opacity=".72" d="M0 39c181 67 289 33 438 17 157-18 246 35 404 35 204 0 339-93 598-43v72H0Z"/>
+          <path fill="#70bbfa" fill-opacity=".4" d="M0 63c164 44 257-20 435-12 185 8 268 53 447 41 212-14 337-63 558-18v46H0Z"/>
+          <path fill="#fff" d="M0 77c177 33 288-17 458-8 177 9 271 47 446 33 208-17 338-54 536-15v53H0Z"/>
+          <path d="M0 64c164 43 257-20 435-12 185 8 268 53 447 41 212-14 337-63 558-18" fill="none" stroke="#0649f5" stroke-width="3"/>
+        </svg>
+      </div>
       <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/50"></div>
       <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div class="mx-auto max-w-3xl text-center">
           <p class="mb-4 text-xs font-bold uppercase tracking-[.22em] text-electric">Give the demo a try</p>
           <h2 class="serif text-4xl font-bold tracking-[-.04em] text-slate-950 sm:text-5xl">See how FitLink <span class="text-electric">finds your fit.</span></h2>
-          <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600">Choose a fit style and share any comfort needs. The sample scan will show you the kind of suggestions FitLink can offer.</p>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600">Try the camera-guided scan preview, then explore sample clothing recommendations matched to your fit profile.</p>
         </div>
 
         <div id="demo-scanner" class="glass mt-12 grid overflow-hidden rounded-[2rem] border border-blue-200/80 shadow-[0_28px_90px_rgba(0,75,251,.11)] lg:grid-cols-[1.05fr_.95fr]">
@@ -292,7 +467,7 @@
             <div class="mb-8 flex items-center justify-between gap-4">
               <div>
                 <p class="text-xs font-bold uppercase tracking-[.18em] text-electric">01 / Your profile</p>
-                <h3 class="serif mt-2 text-2xl font-bold text-slate-950">Let’s make it personal.</h3>
+                <h3 class="serif mt-2 text-2xl font-bold text-slate-950">Start with your fit.</h3>
               </div>
               <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-50 text-electric"><i data-lucide="scan-face" class="h-6 w-6"></i></span>
             </div>
@@ -339,87 +514,71 @@
               </label>
             </div>
 
+            <label class="mt-6 block text-sm font-semibold text-slate-800" for="fit-height">
+              Height for your demo fit profile
+              <span class="relative mt-2.5 block">
+                <input id="fit-height" name="height" type="number" min="120" max="220" step="1" value="170" required class="w-full rounded-xl border border-blue-200 bg-white px-3.5 py-3 pr-14 text-sm font-medium text-slate-700 outline-none transition focus:border-electric focus:ring-4 focus:ring-blue-100" />
+                <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm font-medium text-slate-400">cm</span>
+              </span>
+            </label>
+
             <button id="run-scan" type="submit" class="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-electric px-5 py-4 text-sm font-semibold text-white shadow-[0_10px_28px_rgba(0,75,251,.22)] transition hover:-translate-y-0.5 hover:bg-[#003ed5] disabled:cursor-wait disabled:opacity-70">
-              <i data-lucide="scan-line" class="h-4 w-4"></i><span>Run 3D Body Scan</span>
+              <i data-lucide="scan-line" class="h-4 w-4"></i><span>Start Body Scan</span>
             </button>
-            <p class="mt-3 text-center text-xs leading-5 text-slate-400">This is a sample scan. It won’t use your camera or collect any data.</p>
+            <p class="mt-3 text-center text-xs leading-5 text-slate-500">Your camera is optional and stays on this device. The 3-second scan is a visual demo; fit measurements are illustrative estimates, not camera-derived.</p>
           </form>
 
           <div class="border-t border-blue-100/80 bg-white/35 p-5 sm:p-8 lg:border-l lg:border-t-0 lg:p-9">
             <div class="mb-4 flex items-center justify-between">
               <div><p class="text-xs font-bold uppercase tracking-[.18em] text-electric">02 / Scan preview</p><p class="mt-1 text-sm font-semibold text-slate-800">Camera viewfinder</p></div>
-              <span class="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-white/80 px-2.5 py-1.5 text-[10px] font-semibold text-slate-500"><span class="h-1.5 w-1.5 rounded-full bg-sky"></span> DEMO MODE</span>
+              <span id="camera-mode" class="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-white/90 px-2.5 py-1.5 text-[10px] font-semibold text-slate-600"><span class="h-1.5 w-1.5 rounded-full bg-sky"></span> READY</span>
             </div>
-            <div class="demo-viewfinder relative flex min-h-[350px] items-center justify-center overflow-hidden rounded-[1.5rem] border border-blue-200/40 sm:min-h-[420px]">
-              <div class="absolute inset-0 opacity-20" style="background-image:linear-gradient(rgba(116,191,253,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(116,191,253,.28) 1px,transparent 1px);background-size:34px 34px"></div>
-              <span class="absolute left-4 top-4 h-6 w-6 rounded-tl-md border-l-2 border-t-2 border-sky/80"></span>
-              <span class="absolute right-4 top-4 h-6 w-6 rounded-tr-md border-r-2 border-t-2 border-sky/80"></span>
-              <span class="absolute bottom-4 left-4 h-6 w-6 rounded-bl-md border-b-2 border-l-2 border-sky/80"></span>
-              <span class="absolute bottom-4 right-4 h-6 w-6 rounded-br-md border-b-2 border-r-2 border-sky/80"></span>
-              <div class="relative z-10 flex h-72 w-52 items-center justify-center">
-                <div class="absolute h-64 w-48 rounded-[48%] border border-sky/20"></div>
-                <div class="absolute h-56 w-40 rounded-[48%] border border-sky/25"></div>
-                <svg class="relative z-10 h-full w-full opacity-90 drop-shadow-[0_0_24px_rgba(89,178,253,.25)]" viewBox="0 0 220 380" fill="none" aria-hidden="true">
-                  <circle cx="110" cy="48" r="25" fill="#BCE0FD" fill-opacity=".72" stroke="#59B2FD" stroke-width="1.5"/>
-                  <path d="M75 92C84 81 95 76 110 76C125 76 136 81 145 92L166 159C170 171 163 181 151 182L141 179L146 240L158 348C159 359 151 367 141 367H130L110 251L90 367H78C68 367 61 359 62 348L74 240L79 179L69 182C57 181 50 171 54 159L75 92Z" fill="#74BFFD" fill-opacity=".18" stroke="#74BFFD" stroke-width="2"/>
-                  <path d="M110 77V250M71 170L109 180L149 170M76 237H144" stroke="#59B2FD" stroke-opacity=".8" stroke-width="1.5" stroke-dasharray="4 5"/>
-                </svg>
-                <div id="scan-overlay" class="pointer-events-none absolute inset-x-0 inset-y-4 z-20 hidden" aria-hidden="true">
-                  <div class="demo-scan-light absolute inset-x-0 h-1"></div>
-                </div>
-                <span class="absolute right-[-24px] top-[35%] rounded-md border border-sky/30 bg-slate-900/80 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-sky">Fit mapping</span>
-                <span class="absolute bottom-[19%] left-[-22px] rounded-md border border-sky/30 bg-slate-900/80 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-sky">3D profile</span>
-              </div>
-              <div class="absolute inset-x-0 bottom-5 z-20 text-center">
-                <p id="scan-status" class="text-sm font-semibold text-white">Position your profile to begin</p>
-                <p class="mt-1 text-[10px] text-blue-100/65">SAMPLE SCAN | CAMERA OFF</p>
-              </div>
-              <div id="scan-success" class="absolute inset-0 z-30 hidden items-center justify-center bg-[#081225]/80 p-6 text-center backdrop-blur-sm" aria-live="polite">
+            <div id="demo-viewfinder" class="demo-viewfinder relative flex min-h-[350px] items-center justify-center overflow-hidden rounded-[1.5rem] sm:min-h-[420px]">
+              <div class="absolute inset-0 opacity-20" style="background-image:linear-gradient(rgba(6,73,245,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(6,73,245,.13) 1px,transparent 1px);background-size:34px 34px"></div>
+              <video id="camera-preview" class="camera-preview" autoplay muted playsinline aria-label="Live camera preview for the scan demo"></video>
+              <div class="camera-overlay"></div>
+              <span class="target-bracket target-bracket--tl"></span><span class="target-bracket target-bracket--tr"></span>
+              <span class="target-bracket target-bracket--bl"></span><span class="target-bracket target-bracket--br"></span>
+              <div class="scan-laser"></div>
+              <svg id="scan-silhouette" class="relative z-[2] h-64 w-40 opacity-75 drop-shadow-[0_8px_24px_rgba(6,73,245,.15)] transition-opacity sm:h-72 sm:w-44" viewBox="0 0 220 380" fill="none" aria-hidden="true">
+                <circle cx="110" cy="48" r="25" fill="#d9ecff" stroke="#4b9af7" stroke-width="2"/>
+                <path d="M75 92C84 81 95 76 110 76c15 0 26 5 35 16l21 67c4 12-3 22-15 23l-10-3 5 61 12 108c1 11-7 19-17 19h-11l-20-116-20 116H78c-10 0-17-8-16-19l12-108 5-61-10 3c-12-1-19-11-15-23l21-67Z" fill="#a5d4ff" fill-opacity=".42" stroke="#438ff1" stroke-width="2"/>
+                <path d="M110 77v173M71 170l38 10 40-10M76 237h68" stroke="#0649f5" stroke-opacity=".7" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <circle cx="110" cy="180" r="4" fill="#0649f5"/><circle cx="76" cy="237" r="4" fill="#438ff1"/><circle cx="144" cy="237" r="4" fill="#438ff1"/>
+              </svg>
+              <div id="scan-success" class="absolute inset-0 z-10 hidden items-center justify-center bg-white/85 p-6 text-center backdrop-blur-sm" aria-live="polite">
                 <div>
-                  <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-emerald-400/15 text-emerald-300 ring-1 ring-emerald-300/40"><i data-lucide="check" class="h-7 w-7"></i></span>
-                  <p class="mt-4 text-lg font-semibold text-white">Scan complete</p>
-                  <p class="mt-1 text-sm text-blue-100/70">Your sample recommendations are ready.</p>
+                  <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-blue-50 text-electric ring-1 ring-blue-200"><i data-lucide="check" class="h-7 w-7"></i></span>
+                  <p class="mt-4 text-lg font-semibold text-slate-900">Scan preview complete</p>
+                  <p class="mt-1 text-sm text-slate-600">Your sample fit profile is ready.</p>
                 </div>
               </div>
+              <div class="absolute inset-x-5 bottom-5 z-10 rounded-xl border border-white/80 bg-white/90 px-4 py-3 text-center shadow-sm backdrop-blur">
+                <p id="scan-status" class="text-sm font-semibold text-slate-800" role="status" aria-live="polite">Ready when you are</p>
+                <p id="camera-caption" class="mt-1 text-[10px] font-semibold uppercase tracking-[.14em] text-slate-500">Camera preview begins when you scan</p>
+              </div>
             </div>
+            <p class="mt-3 text-xs leading-5 text-slate-500">Allow camera access to preview the scan. If you skip or deny it, an animated sample silhouette will run instead.</p>
           </div>
         </div>
 
         <div id="demo-results" class="glass mt-12 hidden rounded-[2rem] border border-blue-200/80 p-6 shadow-[0_28px_90px_rgba(0,75,251,.11)] sm:p-9 lg:p-10" aria-live="polite">
           <div class="flex flex-col justify-between gap-5 border-b border-blue-100/80 pb-7 sm:flex-row sm:items-center">
             <div>
-              <span class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700"><i data-lucide="circle-check" class="h-4 w-4"></i> Demo complete | Sample suggestions</span>
-              <h3 class="serif mt-4 text-3xl font-bold text-slate-950 sm:text-4xl">A few ideas to <span class="text-electric">get you started.</span></h3>
-              <p class="mt-2 text-sm leading-6 text-slate-500">These suggestions use your selections. Check each product’s size chart before buying.</p>
+              <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-electric"><i data-lucide="circle-check" class="h-4 w-4"></i> YOUR FIT PROFILE</span>
+              <h3 class="serif mt-4 text-3xl font-bold text-slate-950 sm:text-4xl">Your size, <span class="text-electric">simplified.</span></h3>
+              <p class="mt-2 text-sm leading-6 text-slate-500">Illustrative estimates from your height input, not measurements taken by the camera.</p>
             </div>
-            <button id="rescan-button" type="button" class="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full border border-blue-200 bg-white/80 px-4 py-2.5 text-sm font-semibold text-electric transition hover:bg-blue-50 sm:self-center"><i data-lucide="rotate-ccw" class="h-4 w-4"></i> Adjust preferences</button>
+            <button id="rescan-button" type="button" class="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full border border-blue-200 bg-white px-4 py-2.5 text-sm font-semibold text-electric transition hover:bg-blue-50 sm:self-center"><i data-lucide="rotate-ccw" class="h-4 w-4"></i> Scan again</button>
           </div>
-          <div class="mt-7 grid gap-4 md:grid-cols-2">
-            <article id="support-recommendation" class="card-lift rounded-2xl border border-blue-100 bg-white/80 p-5 sm:p-6">
-              <div class="flex items-start justify-between gap-4">
-                <span id="support-icon" class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-electric"><i data-lucide="footprints" class="h-5 w-5"></i></span>
-                <span id="support-tag" class="rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-electric"></span>
-              </div>
-              <h4 id="support-title" class="serif mt-5 text-2xl font-bold text-slate-950"></h4>
-              <p id="support-description" class="mt-2 text-sm leading-6 text-slate-600"></p>
-              <p id="support-price" class="mt-4 text-sm font-semibold text-slate-900"></p>
-            </article>
-            <article class="card-lift rounded-2xl border border-blue-100 bg-white/80 p-5 sm:p-6">
-              <div class="flex items-start justify-between gap-4">
-                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-electric"><i data-lucide="shirt" class="h-5 w-5"></i></span>
-                <span class="rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-electric">Clothing fit</span>
-              </div>
-              <p id="clothing-profile" class="mt-5 text-xs font-semibold uppercase tracking-[.14em] text-slate-400"></p>
-              <h4 id="clothing-fit" class="serif mt-1 text-2xl font-bold text-slate-950"></h4>
-              <p id="clothing-description" class="mt-2 text-sm leading-6 text-slate-600"></p>
-              <p class="mt-4 text-xs text-slate-400">Sizes vary by brand, so check the product’s size chart.</p>
-            </article>
+          <div id="measurement-results" class="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4"></div>
+          <p id="fit-priority" class="mt-4 rounded-xl bg-blue-50/80 px-4 py-3 text-sm text-slate-600"></p>
+          <div class="mt-10 flex flex-col gap-1">
+            <p class="text-xs font-bold uppercase tracking-[.18em] text-electric">FITLINK DEMO CATALOG</p>
+            <h4 class="serif text-2xl font-bold text-slate-950">Recommended for your profile</h4>
           </div>
-          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <button id="save-recommendation" type="button" class="inline-flex items-center justify-center gap-2 rounded-xl bg-electric px-5 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_rgba(0,75,251,.2)] transition hover:-translate-y-0.5 hover:bg-[#003ed5]"><i data-lucide="shopping-bag" class="h-4 w-4"></i> Save these suggestions</button>
-            <p id="save-status" class="text-sm text-slate-500" aria-live="polite"></p>
-          </div>
-          <p class="mt-5 text-xs leading-5 text-slate-400">This demo doesn’t perform a real scan or add anything to a cart or profile. Suggestions aren’t medical advice, and product fit can vary.</p>
+          <div id="recommendation-grid" class="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"></div>
+          <p class="mt-5 text-xs leading-5 text-slate-400">Sample catalog items and fit scores are for demonstration only. Sizing varies by brand; check the garment’s size chart before buying. Nothing is saved or sent anywhere.</p>
         </div>
       </div>
     </section>
@@ -453,7 +612,7 @@
         <div class="max-w-xl">
           <p class="mb-4 text-xs font-bold uppercase tracking-[.22em] text-electric">About FitLink</p>
           <h2 class="serif text-4xl font-bold leading-[1.08] tracking-[-.04em] text-slate-950 sm:text-5xl">Finding clothes that fit shouldn’t feel like <span class="text-electric">a guessing game.</span></h2>
-          <p class="mt-6 text-base leading-8 text-slate-600">We’re FitLink, a Virtual Enterprises firm working on a simpler way to find clothing and gear. Our idea is straightforward: use a body scan, your style preferences, and any comfort needs to help narrow down the options.</p>
+          <p class="mt-6 text-base leading-8 text-slate-600">We’re FitLink, a Virtual Enterprises firm working on a simpler way to find clothing and gear. Our idea is straightforward: combine a camera-guided scan preview, your style preferences, and comfort needs to help narrow down the options.</p>
           <p class="mt-4 text-base leading-8 text-slate-600">Maybe you’re looking for everyday clothes, sports gear, or insoles for sore feet. FitLink is designed to help you make a more informed choice, instead of guessing from a size label alone.</p>
           <a href="#contact" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-electric transition hover:gap-3">Get in touch <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
         </div>
@@ -475,11 +634,26 @@
     </section>
   </main>
 
-  <footer id="contact" class="border-t border-slate-200/70 bg-[#fbfdff]">
-    <div class="mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-8 md:grid-cols-[1fr_1.4fr] md:py-16">
+  <footer id="contact" class="relative overflow-hidden border-t border-slate-200/70 bg-[#fbfdff]">
+    <div class="wave-divider wave-divider--top h-10" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="#d8edff" fill-opacity=".72" d="M0 39c181 67 289 33 438 17 157-18 246 35 404 35 204 0 339-93 598-43v72H0Z"/>
+        <path fill="#70bbfa" fill-opacity=".4" d="M0 63c164 44 257-20 435-12 185 8 268 53 447 41 212-14 337-63 558-18v46H0Z"/>
+        <path fill="#fbfdff" d="M0 77c177 33 288-17 458-8 177 9 271 47 446 33 208-17 338-54 536-15v53H0Z"/>
+        <path d="M0 64c164 43 257-20 435-12 185 8 268 53 447 41 212-14 337-63 558-18" fill="none" stroke="#0649f5" stroke-width="3"/>
+      </svg>
+    </div>
+    <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[1fr_1.4fr] md:pb-16 md:pt-20">
       <div>
-        <a href="#home" class="inline-flex items-center gap-2.5">
-          <img id="fitlink-logo-footer" class="h-[66px] w-[76px] object-contain" alt="FitLink logo, Your Size, Simplified" />
+        <a href="#home" class="inline-flex items-center gap-2.5" aria-label="FitLink home">
+          <svg id="fitlink-logo-footer" class="brand-mark h-14 w-[190px]" viewBox="0 0 360 112" role="img" aria-label="FitLink — Your Size, Simplified">
+            <g transform="translate(46 0) scale(.85 .45)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="8">
+              <path d="M111 12H97a10 10 0 0 0-10 10v12M230 34V22a10 10 0 0 0-10-10h-14M87 71v11a10 10 0 0 0 10 10h14M203 92h17a10 10 0 0 0 10-10V70"/>
+            </g>
+            <path transform="translate(46 0) scale(.85 .45)" fill="currentColor" d="M128 19h76l-11 17h-57l-9 13h52l-10 16h-52l-17 25H79l27-40 9-14c4-7 8-12 13-15Z"/>
+            <text x="180" y="77" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="41" font-style="italic" font-weight="800" letter-spacing="-2.5">FitLink</text>
+            <text x="180" y="104" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" font-weight="800" letter-spacing="4">YOUR SIZE, SIMPLIFIED.</text>
+          </svg>
         </a>
         <p class="mt-4 max-w-xs text-sm leading-6 text-slate-500">Your Size, Simplified. Clothes and gear that feel more like you.</p>
       </div>
@@ -487,15 +661,15 @@
         <h2 class="serif text-xl font-bold text-slate-950">Let’s connect.</h2>
         <div class="mt-5 grid gap-5 sm:grid-cols-2">
           <a href="tel:+17184412100" class="group flex items-start gap-3 text-sm text-slate-600 transition hover:text-electric">
-            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-electric"><i data-lucide="phone" class="h-4 w-4"></i></span>
+            <span class="contact-icon grid h-10 w-10 shrink-0 place-items-center"><i data-lucide="phone" class="h-4 w-4"></i></span>
             <span><span class="block text-xs font-medium text-slate-400">Phone</span><span class="mt-1 block font-semibold">718-441-2100</span></span>
           </a>
           <a href="mailto:FitLink.NY@gmail.com" class="group flex items-start gap-3 text-sm text-slate-600 transition hover:text-electric">
-            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-electric"><i data-lucide="mail" class="h-4 w-4"></i></span>
+            <span class="contact-icon grid h-10 w-10 shrink-0 place-items-center"><i data-lucide="mail" class="h-4 w-4"></i></span>
             <span><span class="block text-xs font-medium text-slate-400">Email</span><span class="mt-1 block font-semibold">FitLink.NY@gmail.com</span></span>
           </a>
           <div class="flex items-start gap-3 text-sm text-slate-600 sm:col-span-2">
-            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-electric"><i data-lucide="map-pin" class="h-4 w-4"></i></span>
+            <span class="contact-icon grid h-10 w-10 shrink-0 place-items-center"><i data-lucide="map-pin" class="h-4 w-4"></i></span>
             <span><span class="block text-xs font-medium text-slate-400">Address</span><span class="mt-1 block font-semibold">83-53 Manton Street, Briarwood, Queens, NY 11435</span></span>
           </div>
         </div>
@@ -505,17 +679,13 @@
       <div class="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <span>© <span id="year"></span> FitLink. All rights reserved.</span>
         <span>Thoughtful fit, made personal.</span>
-        <span>Made with help from AI.</span>
+        <span>A Virtual Enterprise firm.</span>
       </div>
     </div>
   </footer>
 
   <script>
     lucide.createIcons();
-    const fitLinkLogoSource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAM4AAACqCAYAAADlenCIAABaF0lEQVR42u1dd3yV1fl//ulurbZqWzfkjoAgKi5ELSODCCIrEEbYQ/YKdycGQRFxV6u29dc62lpbtVbrauto3VIngkASIGGvhOw78/s+57zjvPfehKBhxL7n83k+b3Lve9/3vOc93/Ps5xDZzW52s5vd7GY3u9nNbnazm93sZje72c1urbZ5TV1ofngELQivooWJpwXNaZpoD4zd7Ka3mS3foJmN59Ds5iyaF7+J5sfeBO2hBfEamhetpzmRBpobbaDF8VqaH7nCHjC7/W+2+S3foqUtp9LMyMV0Q7gYwPiA5sf3gappXuQQzY004RjH0aQ5YRyjCXCiafYA2u1/q81uuprmNj8IEGyiRS27aW7sAEADrhIJAxwAhaC4ApqEQvg/1kJzGsfYA2m3r28buu8HNONQLs06dB/ErfdobrwMwNkHANTT7HAUFAOAAAhwknlhHTQmzQ2bx7nacX68hWY32qKa3b5GbcK+n9GM6qE0Zf8t0FeeB2gqaFbdAZrV0AAK06zGKN3QFIceA7FLJxa/NODMj5gkwJMGOPOiAFv9T+3BtlvnbeO2daWJVXk0afcKmrr/VZq6dyfAUk1TD9TT9P1NNONgFP/HaEZtnGbWxwGeON3QaAWOAA1EsPnpgKOARwAoEgP9p0OfIX+H236Rdju6rbDsdBq/8VKaUFlEE6r+SYU79tHkPdUATx1N2t5EU3bHaOqeOE3dF6dp++MADgBzKJ4CHJXTtAmcsMp1pM4zv3FUhz3PkJ2n0vU1L9ov1m4d2/Lf/g4N++g8Kli/mMZs+BCA2UsTth6kceU1NH5LI03YlgCAElRYFadJO+I0eVecpgA4U/ZK4EzXgDMTwJlVB6pXgKNwGwGcSCKVwiaI+NyFiQjdUHd6hz3fiANXUEFsu/2i7fbVGwNl+CdBGvXpW1SwqZzyP9tNo9dVU8GGCI3bGKexmxI0rixO4yriNH5rHMCJU+F2AGcnAydhBc4BgKYGgGGqNYEzG3rOHNDcZivXmZdGVJuvimnRVzp2Yajx0eiGCBXsOs9+8XY7spb3rwwa/PZMGvrenwGaD+j6D3bRyI8O0YgPwzTqoxjlfxqn/HVxGrMe9EUcYAJ4VOBUxjWOA9DsNoEzVQdOtQTPTA04s1sDjgEgVafRj/g8BgPDIWeHPvvYpg9oDIwW4+rvsSeC3dpuuS85KPufE2jQGw/SkLffo7z/7KYh79TQkLeaaOi7Ybr+/TgN+yAO4MQBIJAGnNFJwBkP4EzYAtpmAkdyHNDeBICTEMCZAeDMSALOHA04cxTgMM1JMkszcIS5GtxmXuyljrUANlxM45ojNLY+ShOj1TS+5SR7ctjNbFlPnkNXPzOQBry8knL+8Sbl/Gs3DXq9hgb9q4HyXm+ma9+I0ZA343TdW3Ea+k6crn9PAc7HEjijAJx8Bs5GCZxxm0HlJnAmQs+ZuF0CRwcPA2cagDMdwJleIw0EFuAkGQhSgBOW5mf+bH6Uw2x6dSy3idxF49CP8Q0xmoS+TGsebE+W/+XW77cnU98n3dT/rwvomqffoH4v7KUBLx6kgc8fooEvNQE8ccr9ZxzAidO1r8dp8L/jaYCToBH/BSUDR+c4DBzmOjpwKiVwJu1UgROXwIGBYLpmWZtVl6DZsKzNSWNZE1EBDBLNUKADZ26UP7+lQ8doRMPPAJzdNAHAKURfJjXHaHpkM+W3fN+eQP9L7YJHv0dX/n4mXfmHf9PPn91OP39mH/V7ppr6P9tM/Z5L0IC/M8Up66W4CZxX4+A4AI8OnLfTA2fEJwDPZwDO51LPGauCh8U16DmFDByQLq5N3q3oOQdNrjMTwLlB5zqguU1WHUcYCHQ9R4hoUVoQ+zvNPPjDDh2vcc3/oLFwxhbi/pNAUwDi6RAHZzXPtyfT/0Lr88dxdOUTr4K20FV/qqa+T4Tp6idj9PO/JOiap+L087+C/hanAc+DXgBwXk5I4PxLA84bAA5osMpxNB1n+FoA56OEAM4I5jo6eDTgFGjims51GDyTBNeRZunJezV/DrjONA08hj9HNxJonMcwEkRU0S0GzvMe/DZndeiYjQ+XADgwpTdK0Exl0OB+M5nTxfbRguiV9sT6OrbL7z2JLn94KTjMO3TF7/dTn0ebqe/vY+A2cQAnDgDF6Zo/xw3g9GfggNsMfBHAeQXA+acGnNclCeD8J1XHEcD50OQ6oz6VwBm9wQSObl1jXacQ1jUGzmRNXJvM1jUFONM04MzQ/TkQ2Vhsm50OOMIh+jea1nRux4KmaRIVRqoFp5mocxrcbxaTCCgFWOMbaD4CUe32NWoXPng9XfrwB3T57w7R5f/XRFc8EqM+j8UBorgFOFc/CeA8DdI4Tn9wnIGC48QpGxxHgOdVK3AMce1dgEcDznAW19iy9nHCBI5iJBDAKZcWtolwhk6qksCZAuBM2i2Bw+LaVAYOGwj0KII6BThNUteZE45J61nkAD5bQXNrf9xh4zbt0I9gCFhB42E9Y07DoJkM0EzVOM0NoNmaI3ZhJIKcn220ODzOnnCdvfW+9Yd08a8epIsfOki9f9VMl/4mRpf9XxzAiRvA6ftHFThSVLvmGRM4LKoNfIm5jtRzcjRxTQWODh7mOsPXgv4rrWujBHAScIQmrGbpzaZputACnLih50zRgMO6jgU4LK7Vs6gWE6CZF9sLzvM0IgN6QMT7QccYSvZ+n0bXXQN/zbugWhrfGBMGAaHXADTTNE7DoJljACdOi6JRWhyrpqXh52l+w0U0ecu37UnY2dpF951LFz+4jXo/UIdjnC75VRzAiQvgXK4AR3AcgOeqJzTg/KUV4ChcRzUQqFznenCdYe9r4NHM0gI4n0ngFAA4YzeawGGuU7gloYEHoNlpht7oXId9OtMR8DmzNgJxDUCJRzFR68BdXoORoJBmwtI1ruaUrzxeeUiQyztwFo2sLqFR9VupoGk/FTQ0wRgQA3DQz2bJbRg0MzQxbbaW+8MWvQUCOHFajOOScCN5kFxXFP6EFtbOoKUbT6XSlm/ak/JEb+ff1RecZgtddH8UwIlTbx04DwM4v5XAueIxSQyePhp4rvmzFTg/f07qOQMAnIEMnFdMcU0A5/U04tp70lAguA7EtVHQc1TgFIjwG2mW1n06hcKnw7pOXHCdKXuiUs+BNW1GYwKg2QER7WGa1nAdJmx3WtR0Hk2ESDZk53c7ZLyGVZdSfvgLyo/toOGHDoLbhKkA3G1sgwQNc5uJzZLbTI9IMU0HzjwNNAs0rsPAWYoUhmUMonATLYJu5ItX0aKGd+mGrSPtyXmitkvu6ke9f1kOjhOli3+pgeYh0K8V4PxOimsMnD6PgzSRTeg4OnCetXKdAS9KcS1bMxIwcPJUf44OnHcVC9t/ZRRBvhDXpFla5Trjyxg4EIO2xWgiRLWp4C5T99TBKPAqTTmwgiYhR2da9UUQwc4QXOVoiT5ZMFuPrM2kUQ15iEG7GZwGHAdAKWiISm7DYpoCnFmafjNH4zYLFRIcB+ZwBs7SyKu0oGE6FTVeTjORczRz7XftCXpCimd39KKL7yuji+6N4Bg3gfMrCZzLHtZENYDnCgbPo1Jk66OJbELPUSxrOnD668DRxDUVOBbrmiauCQubJrKN/DAu4tZM4MQEcJjLjC+HT6SynCZsfxaO0ADycvJo2l4HzUTYPusr+euOrXgzf/O3aPyBk2howxlUUF8IE/THgtMUKkYBHTiqmLbQ0HGY20RpUfPfaGl9Li2tPZUWV32HHlr7DXtynqjtgjXfo173bKBed0fownvjAjgspl0C4LCO0xtc59Jfm8AxuM6jCnDYSJDEdXTgDDwMcJjrpAMOGwnyP9OCPTc00NjyjRDXnoaOs5TGbu1D+Vt+SvlVPwJIvk/9TiBleibEwPHwBU0OP0yTYISYogFnhgacOWErcBYJEa0GoFkkLHsMQrt1gtbr7meo151huvDuuATO/QDLL3VKGJzHAM4jCnA0ce3KP2pcRwcO+3OeU/w5SWZpXc8R4GGRDQAaJgwEUYAmhpCbOhr26TZwnGdpzLrpNG69k/I3n0bjPj2F+gEox5qjfJnGIuKU5tk0FSbvaRpwbkgHnOhBWlDXv8Mse3Y7Bq37qgHU8/Zm6nUXQHMP6Bdx6DjMdRIAEEgFji6uaaKaMBIoeo4BHBbXdOuaBhy2rhkGAuY6DJ7XogBPjK57twXpBS009IOddP3a+3HMBjDOAYGjrPsR5XzyvU47vgyG6U0rAZqYMAzM1kCjGwYWx0EwXJTa5ufO03quOgWgKaeea2J0wR1xcB7JcS76RXrgGCbp35ocJxk4RgSBapY2ogiiAjjXQqcZ9EYYYtp7SC0ohWEgG3QBUg7OBIBOpryvmaiSD9/OrOgb0jCgZKAujCVocbTEFs06nen5tunU87aoAE7P2+OS6xjgaRs4OtdhUe1KleMowOHQm/7PxUSg58CXauEAfRViWgk4zTCIaD1p+MuoJ/DCSdT9ya+/n2IanKw3xGoMw8A8cKBF8fIOTcu22zFofe78DvVY/TH1WAXg3BYXwBFc5y7JeS66NyG4Tu8kUe3yJANBH80s3Zf9OcnAYdC8/DZoPuW8nEl5/z6N+r0GRf61/02xZG7s9wBOTOo38NcsCI+2J2KnE9PWZFGPNRE6/9Y4AGQC54I7Nc5zjwacBxLCqqabpZnrWCxrGnj6anFrwp/zVIz6/X0TgHMt5b0gwWI3FHSPDhA12jgKe3G8Cc7ZU+1B6Wytx6oHBGAE6RznzgSsa6C7EyZwfqk5QRXg6AaCyx+xxq5d9UcJmque+RMNfPYnlP/kd+yBVnUdWALnRdcDOGFY034vir7brbMB5/ZPIaLFpJi2RuM2dyQkeO4CcCCqXcQGgl/GzXi1NMBRY9f6gtv0fXo5Xfb0j+0Bbo3rhFcjrQHVRRHVYLdO1jJXnUfdb20Ap4lBXJPcpmcScFjHMQwEmrhmAOdhU1wzjAS/T1Dfv/wCWaAn2wPclp5TPxBGgb32QHTG1v3mqXT+6ij1uFWKaRes0bjO7VJUu/AuKaoZXOd+DTga11GNBBy/xsDp+2QZ9XnkTOqs239wbeh54Uwo7T+HBz+PFonNpQpocSMISvzC5qG0pKm/KOAxp/FsER1AX7LW9YLYW/Yk7Iyt2y1/pG6rYhI4qyVwLliTMIFzd0Lz6SjAeUADjgIeFtkEcB6P0pV/uqZzgATxZIvDPakoNpyKoitpSexpBFZ+SAvDlfCp7KEicIMloKXx/VDgD+B7EI5F+L8I4f7LEnvw2S6cu56WxV4kb/wO8sZG4xq9aHZL+1IUbmi8zJ6EJ3JrLSK45+3rYBwwgcN6DoNGAkfz5dwjfTkiigAhOBc/YEZLC5GNwcNi229jdOnjn6LSzYljYi5q+R5yWE6me1tSHYscC7YUnIXBs7TpGsFZFoeXI93gcUQn/5sWRqtoaYLB0oAYspiIVl6C4MslsIQthfOySEQwc+h/GNRAy7DPThHAFUjsJU+siryRB2kJEtFKW1rnSL3twM0Tsw3/5HQq3HcXTdgxJeW7M0q/C7DUAjRW4LCo1ovBo5mje90jTdIiBOd+GS3N4Ln4IQ1AOngAnCseG3/cn/mmyEV0azQAeovuSGyjO1uY1lHR7u+ltW4xcfRxKUQuL1IDFiPV2V93Gs1DdPOSlrNF3s5ChPQvbJ4HQL0HcETBcRII9weAAKYiBo9GHoDJC/IAYF7s7OaL76Zg/HMAaZg9GemE3yfGTZPrb0Xex9tUWPdHKth7EY1/96Q0YTb5dP6qCGLUYpo5OgHgJDSuY/pxdFFNj127EHTRL81oaR04lz6CSjcP/+CY6iPFmNClYQ+VRv9Cq1veodWJTXRLdDfdGjtIq2PNoKigNbEw3Rn7vy99Lw7p53CZInj3F4W7ARj9EcV8M2gPxLQ4QBPVgGOSVyM/QOTDecWJV7EL3Hn2BD2hOMv2HwMkc2lq9AXkfGynaZFNyG6cis9Ob1Uc6LbyrwBNFOCJS45zK0CzuhXg3GPGrgng3G8Cp7fw60BM+926o/Z8M/EM/mYXBWNjyBe+jUoTf6fS+Hoqje2mm5Cff1O0kW6ONtMqTNJb4VhcjZwWpts0uj0Wobtif6CO9MMwd+KdqYsiMwCarRDXTMDIo+Q+vqikAPYV9cW24Rny7Ql7vFthXTea2lSK+lwbkedxEDkfDQDOkyIeqq2U4O6l36Tut+wEeGI4xgGeBHSdhOQ6a6zAuVABjiAdOJquo4trl/yu4ybmwvqf0GKUSVrShEkZfxAT8b+YdDsh9uynEGoFFGMX6GJUhCnBBF2OCbsCE/Nm0CrQrRpo9OMaAZwYgHN0ysyyCMjinDf2S3CisMJxNOBo4AmgnwEAOwQDQyg2xJ68dBy2Fp8UPp8mNTxC06I7kedRA7CEaSq2F59YPUmUIzpcO6/0ZOp+WyN1WwHgrABwVmrAuVUCx3CEJnEcQZrIpus7DBwW1S5/ZOqXAz8U+LmoYTavaQBMwDfDBPxv5KVUyUIV4CaecB0mYliKPRFeueMUBIVAN4KWg3Tg3KIBRlDEBM49iQYYCI5uYXMfcm6WRRZDn4kCQCZw/BoForLfDKBi7Ee6zN4S8di1/MYzaXLT32lqfA9NaqzF38gqhHw9ufENVMD/GRXubl++invlJZQJwHS7CYRj9xUJ+HQU8NwmLWuGuGYYCXQrW9ywsolQnF+H6bJHu7Tr3lypZQqU71lNE+EHeRre8wps2rQbOSmoZAmuubgZxSlQtmkJytAWgTywYHm0ldsftgKnFHSTBpyVOngiGueJ6OJajO6IldGxyrnxRlcJg4HeZ58Gdr3fgqAXBcNr7AlNR32/y1NQyO5XNDm2BdylAaBBDbHGCAwAqHbfMJfyj3D1On/laspcHjWBs1IBzioFOGqktCq2KeC55AHoN785/MScjEIWU2oeQvXKz1AneRu2FtwH8NRj9wAEOzZhE6fmBC1AavFCkAQOTL6gZRpwvDj68Lz6BCxm4EQlx7kpqoEnIoEjwKMBh8W026O+Y/auFmEB80SaTTFNAY1xBJhL4uvsiX3UOAxW5wkNAYhmG1AhpY4molj3RNTomoTJNgn1tsbB/8DWniNpjnu/RZk3bQFwYiAAZ7kOHohs0HekrhM3dZ1WgNPrXj1DNApRrfW9LMdjy75p4RdoUl0VdK86mo7aZjProqhlFpO7QDdpBdABGB04iwGSpRpwihTgJItqJVGT6wjwRCTdrIGHRbbboRfdfgyjjx+CKO2N/EazqinAiZqch4ETjNYLs7fdOrgV1PWjCZHXUCWlBuCJUCEm2gSUGpqIwMCJTX9AsbvzqPRL5Nv3WHk2Zd4sQZMCnJs18NwaN61rd6S3sPXS9B2Z4Lac0lWyLKi+iQprd9Gk2kaahIKAU1FJc5pWw3kmb2abDjgAyKKwFTzLWgEPc50STWRbrottEcl5dGPBbYnnjvm784avh8gWM3ScgKbj6PqOH9/5+Pv6nvZE76g2ufpkFOheDtDspYLGRlHQbgKIgVMYOYg9VRZTfjsMAK21jOK+AEoLuUs14NyUBjir4gbXMRLbjPwcK3B6P5igSx+8zsopUXFmdPWfUaSihgprwB1RfpZpCkAzFaCZjvKzMxu1zWw14Mxj4IStwFmigMcU1+TkU4HTGnhugS/n5ujAY/4O/bFrBXB80VaAI/w7YVpafa494alDqkGeB/HrHYClBntDchVISePBaQqb99CEGuTkf8UKKO6bPOQqiRnAybwpCTy6uHZrwswIVTnP3aah4CJRCSdKF/3GOgEKal6gMfsbaNwBgL1aA06tCZxpDZLjzFLAw8CZr3GcBWnAw1xHBU5AE9dCGoB0C5sJnhiA81zacJuj3TzRWwRHkWZoXa8xRTUf+haEed1uHdDGHCygceEqAKUJ1R9RcK8+JkAzrjFMhSitOhbKdUfUDMtc/ga5iyOUWQLQpAOP4DoSOAbXUXN1NPBcCO5z0T3Qbx763HL9kfvupPwDDQBODMBBlU1ssVEI4EwEaCbXSZqKRWEGnm1GowSPsU+NCiBhJDBFNiGuhRXzrmKlCumcJ2pyn5virPf0OebvcXHLdwCcnQI4uhlaB01Q5Tzh5+xJT1+xqv2Y+kdQ0Z5Fs6gASwFzmnpZd3hC84sQd7p0yL163PwTcpfUAzgxcoXiOIJuTBLZGDg3a8DRdJ1k4LB/50JhLIgg2PMx4/qDN3VFwfEaGrU3RqNR7HwsgDNeAc4kDTxT8GzTQNMbpcjG+9TMaQ04oCXNEjweDTS+cHrwGDoPzL3L4/OPS801byxPE9NSgWOYpdE/f4PtBP3SLa8mg8Y0/YPGNNajXGoMhEqVGo3FhBof/vMRm5rbaq7lA8kNkDgDCnA0zmPVdRJGKM75ekq1bmXTSEZPc1r1XOP6w/c9TiP2RWgkdgowgIO9aSYAOIW1Jtdh4EzVgMNcRxgJmk3Oo4NngQYepiWGrhMTnEe3WPmVCSlFtxiA87hwSB7rtqjlZ+RLfCEsaj5BbAhQwBOV+k1x7GV7+44vrc/U9KbR4bUo0N0Ewgpdz6QBh0W0picgnnWsGdVV7ANJ4LiTgaNxne6GuIbjKg04inla1Xku5HSDu2X+zQgkZo040Egj9sQgrgE4AE0B9qUZ1wZwpinimm5hm9OkgKdJA4+m6wh9JyJD+pn7eMKmpY0nZBAhLcHwX6j0OHjl81lEiz0KbhNOCxyd+xQjGiLYeIUNgC/TRu67hEZHKsBNmrEdhATLaI3GsH4TfYaG13Z8vr6r5GlyBaPk8setHOdGk+t017gOg0fEsd2qWNjUcBwGzr241gMy23PYnmE0fC92UYOYNgrcZowGnLEHJddpDTjTG6S4NqtJgmeOYp6e12T6dZZoxgL97yLFVO0TVqpa6A2rqPQ4VYwpit4GMa1eM0NbgcMk/DnRBDjjxE5RtvfEA83BC6ggvgsbD0UBnLgJnDqmKBVE/tXhnEZvzuJywW2cDJygBI8AEICTbJ7mkJzuGtfR83W4LkEPI706CiPBZwoH/SUN3xMG59GAA8CMPqhxnWrJdRg4E+tMI8E0hevMVEU2BUALEC3AkQQLQYtUH48Q3yKIaYsBQO+Sr6E3Lao+PnUOFkfvRnpBjUgtEPqNDpqICRpPNEK+5lvT5gXZ7XDi2d4LaUysEnuoxARo8hVOk18L0DRtpfwOMgQkt+6BC8FdIgBOnBz+uDjqwHGVmCKbDp7MFQrXUcGjJbz1uDUC4NxuXP/6Axto+P4IjYA1bSS4zagDEjgMoAIAZ5wurtUpRgLNND1D4zrCRN1g9e9IXQcbyzZHaEFTBMBBEhkSyZY0HwTdh5W+D3mQdEbHqUZBUfTPMhhVi4qW3E+aon0GcJgLPXJc9K7Ob26uddGoyDoaWa+DJmGAZxRzG6ys+bVXHbX7OwMLyRmS3MYAjs51iq3AYfN0psZ5ukFs63azpu/oYhtnja7mINBB4tpDdp5Dw2vCNPxAFMDBthwacPKZ6wA0BTVS1xl/yNR3hF9HA48wFDRIx+gs4d+JYTv1mNB55sd4F2gAJ1yGGmR/BOdZgOjpLFjbHCJb83jtG7MUEd3LEq9A32oAx7Mmr+l5OF5dx4k8IPpqtyNs7LQc1fQKjagPAyQADGhUPZMGHJihCxARUHoUZV9n4Cly+AAcX1yAh4GjkxDXdOCUWjmPAI6q8wgHKdeYbqGed3aVwNk9kEYAAMPAbYbrwDkoKR/AGVMtgSPAU5Nsno4Jx6hwioYl95kV2U2zo6+CA/0CnGcGLWi8ElzoTFHxcg7M98e7GPvi5uuoKPEZDBVNqDtgWvu8UTV9mv+PCL3LBs2XTge4g0YhXH4kg4QBUydBM1IX1yJrKecoy77O4i9M4OjgUUQ2NhToRoJkkU0HkA4e5j7db2umvqtlFMN1uxcBNAAO9JvhsKgNB3BG6sDRxbWDMHog/GYciDnPRHDeibWIX2vaR9ObPwHneRocZylNQ+DqzMZzRPbqbIg2DJTSE0SZLmo5HaLZPbQUuU+LUYVTWPo0Kx/TMo0YRH7sZO3BxrycKWq3L2MMOHA+jW6sMYDCwBkJ4PDfI7FKj0IA5+imo1tSqUfwbACkESJaDOCJCzKAEzRFNgt4lidFFay06jznr3nf1N0OPkZDsVmtChzmOiN1OghDyEHeRLYBcXcIHTr0HwAD8XjV/RDtfQ5qJPxUbGR7PLYebG+U+qLGvuAym8WOaVzdZnE4ZjGPL9NN5MiP8sBi6kF2rm0I+AqtoHEtwBKTgKk3OY0BHGwZfrT3RXEGbwBFBMcRwNFA49ANBUm6jlsDj1uLns40Et6kqZpFte53BozrX3fwMwAnQkP3SlFNGgl4kWihEdXVNOrQn2hMTb7Q86ZBN5i+5yc0GDlGnWE/GC5OuCD2Oi2I7oCIFkWlm5gEjr7JbVjnOBGYowGg5jXkwfaFdvsKbfjeqygfIprUZzQRTeE2+Rj00Y1jj3o/nMXPS9B44wZwdNBYgBMy9R2LzqNwnu43cWRBlC64p4e4dvYXZ0CHa6QheyN0HQOnBr6c/R9AdJsNY0cfGlzTlfKQdzJzZ+faLXkBOOHCyGOgLaAmEECTZBLXgcNbqxdFvgBoBtmWs69s/uWaXfUf0siGWFrgjBLA2U+5x0BxdJVuTQWOIqqlAEfhPCqAZHRBDNa1Qyh+IK1ZgytzaSh0mOv276Xr960BtxlAQyvPEDpbZyy4NwfWujnNd6LE7WZQg7DosS9pIW/JoaU9GKkPvNktQFUUXknLDjntHdU6RC4+eA6NgXNuhCam5evgMUAUozHR1456P84r/TY4Th1AI4GjGwZ0k3QKcIo1KlE4z40a6cBZvc24/uAdRTS0+mG6fld3Gralc24/yAVQZqOqzvzYgwBKJXxGtQj5ieJvmeLAJAJPIyZoFqEk1ZLmZ7Bv5yXHzfH69RTT6kbAmtZiWtKSaCQiB0ZHHj/6YlrwGgAlKgBjAEfRc0QUge7TYRCp4ClOCsvRgNNt1cvG9a9e/zPKreqc5tahLbyh7dXYyPY5gAYm8KZasdnTPC3cZ35zEnAEYGBNi36A2gJ5NJ9FULuMbce2UY33QUyLwGqmgUU7jjSOUThEf3fU++EI/kIAR4hpGnAMkc1nFd0cOgcKaQDSxDaXAh4uKZW5yt+p381MmIhnNS/EdukV0meEAigcmS2CTLUA03laioPMTIWoFmPglNPi+hxRkKOfHd18tHw3rwqukiyiGcDBdwWovHlUQTP/W+QI7ZKimTeRChxvEngCCngCSfFshqmatz3s1TkB05xDs8LP05z4Ruz6vF9s7DRHJNLFRIycTnp0thDXosxt1uGzbFH/zd5O/Si3ETBDMzhUbqP/zeARoTeNu+EjOHoOsm6Bn8GknJCg8CUAmkQqt1FEN4PrqFEFGngyBdeBmLZit6iU01natMhlNKP5Xroh8RYisHeCGhFMip3QmhgsemiPCpyY4DrzeWNbBNzOa8wXDllb8T9WolrTy1JU03WcBkn5DQnDjzMKL2xE07Sj1oeupVch76bFBI4fxJxHA5GL/1eNBaq1LQlAnDXqLkEawYp3T+hx5yiDqY1XIXynmGZEX6IZTdvxdy2O2KS2SZakYtDc0KwBp0kHjtwFenb4AES432KDqUHCMZtfZe9feoxFtds0jmMaB/I1MoDDDtDIJ1+5AEerhoEbVwAIEQ0cEjAqCSD5EyI/x5lEDoWk9Q1Zowye0ofpRKwMNLn+QpoeXYqCh+/QTGz4NAOlgWeCu8wAKGaCq8wEYJhE3g9AckNYgoULIs5G+My86AYA6Bbsm+MSe+fYGZrHqRXUDITVrMUCHNUsrTtBRyLwM7/p0aMDnNCHAIEETjJoVOAY8WvJBgOL9U0CJ3P5jBPCfDwZG0ZNPHQZTWv+BU2PlNH0+E7Euh2gaY3NiH9D0Ch0l+lNkmYqNKtJimMMnrnxOgSP/ht/DxH74Uy2zconAMeBiXZMU1wLsVGA06CapDXwNNbR6OZnRX5Hh+k3wXPBHcJiwku9Jj1wBDB8qXqPqv8YwAHX6X7T+cdtTKeEu6Pkb4gmh9+jGS0VqJ29g6Y0VAMcMXCWuDhyHYNpKnC04wwAZQbrM/EWgGcbIq9nwliQIcQxm7ucaHrOwTnQc1oHjhHwyeBpaECw53+Q8OXsGODcnC0MA0Ls8mhWNQaM38ptDM6iAwUgy9BM14bfh40EAeg3JVXHzDDAOfzjGy5FjexlKP/7HArNf4y/K2lK0wHUzg4DMCg2j6iMqQDDtEYGTMwAytQmndtExXFWLAFuUwnALIfe83N81kVEXduNTtw8nNHNb9IIvGDOVxnBYltDGmdoXVzLzUENgsaNVBC+FTrSOfTVCg+GZOKaHpOmA0dR+A09RgONChjTRB0ToHH4msHBXj5qoheX9J2MPJfCJnCU2BM0EbWxCxu3g7swUBoBlAi4jQSLIFglpzRIYvBMaZSgYRBNg6NyGnMYXGMa0pVn4brjYErOh//GzvenzlOdM795gwi9GaHn4DRYjQVSD9IpKtIQ8ps30SgAaChCOvK+hAjnXv4guEWzFLFgRnaVyqODwcSKPh9BjqCkDL9GAAqnHzhR1INTEZzBAzi3EmbodeBiBR2iyE9odlNhfS6qlRbRpMhvUQsb2y5CfJqCLf8mQ6mf2FAHsAAoXGCeqUGnuEYKcDBeU3DOVJiQpzbXw0DwPjjTXTQVnv2JSH7jcJjFtmWss8at9QTn+VgEfEprmmIoqEsHHtZ9cG4tAIRSqaMa/oPfzkUYTzcAsX0KbPfSnyKiuQ8m/LXIoxlH5982l7rdivK3K0vAOVaS48abJZXcSI7lXtBicpbeQK6bJpJ7xVAcr8b/FwJwXSkD+TyulWdS9/vbJ95Mbvk2EtZOEVxzSsPFSFqbhGqkt6CM74s0oRHbLMa2UyFAMqEetbDravF9s6iPPVEDBh8nNzLpwJGfTazXgMMcBmIYA2c6xof3B5oGEE6svwCAOUPcu99rtt7ytdkUalT9YzA/S1CMqJP5OfrRAhrdaFDL4h2Lcs0A2D4ajZyQMeGt0IVeRBHDJTQOlV3GHzgpLUfiyOSznvwOubGhrePek6jnL08R1L30R5R5y48p0/9jceT/z1l1iqDz7joZ+3r+UACEf0vQZ3o/9I20ohXfk7dLHLHzXFTn6U/j625Aud47IXK9gAqk62lCeBtNTmynSdFd4Ch7UDR+P0BTD7AgCxTPNB40ASAorJc0QTtOVIDDAJnIgOJsUYhqE6GvTMFGuBMbt0Eku4OmHLoc3OZs6W8ptzMtv746D/a2HHnoWoBhPyILAIo6U3xTfTtC5xHHhNCNdB1IcClRTqoJBCDVbweQNlMB8t/HNH2AwoYvYeI+gN/eSKNqp4PTDYZZ/BLK3eugIVVnInL5NMpaCzn/te/TkLXfpT5vf4cuePl7kPt/RDllp4uiG/m1birgum81WQBCPo2tQynZ2lWgR3H9V5CY9x5NaPmQxuOe47BJ75j6bShntRPbkuwFIKoB5kZRJH4Cnq8QG2BNbEiIyT9BEGoO1Jsk/mfwNMi/CzXQFHKReeY0qEM2GSEvk5rLsSfQAzh3CE2N9IK4d57IGLUDLP+HGofdXwsn2whMyJGNZTQyLAHDABmugcSkhPH3qCQSddjAkfIBvnzUYxuNDZvYuDAKWxzmw0Q7umEvPt+FCb8dJacqkX0JTlVXRmPqYHwARxjb9LmgMfXrMekBgLpyeU49Cr/X78A5AEPDbtB+FEmswXn1OKcZ50YkQbcYg3sXoA868Q4L4zUwCOAooBivgkY/h8FUH5GcBpyYQVKICOWJzf+kCdgUuBDAnYyql5xePdF2StpNt7gNQ+3o/NqZ0GGeheWtAQU9JEiYExngYXFNIxNAslLO6NqEAFA+Awh/jxKE8w5JGoWKMqNwzNfIABpquI3GRk9jQKMPRcXngrTiiGP4iGsxFdRJGmMQfxc3jjpoxiYDp14Hh6RxAIn4jgGFxWJCmP/G/jnYUXpC42OgImlVgx7H9bI5gpnDXWwrmN3S6z7wJ7AINxQVPkfAuTcSiu7o8A6AJyqNCXUKcDQygKORBTiHEhI4NVbgiGOtSaNxHlO+/rl2HC1AoYGkNgk0tfpRAw6oADQWNK7OBM4EneM0cYEO7JETbqSJ0e0AC4PkSYDoRhpfO1xsXcKWL65cyoU6bOuX3b60qZZXW7ZGDUHIzqha7DVTi8Ls2J1tNPaM5Ng3AR5OVwDnGF1rTnrBYQCEEZzzX6MB55BCtfo5+v8MsIT4W/1cgEcBS4EGmNEqYKCsj2FRTdthQezjgw1jC2OHxE5y4yD6ja9/ASBaCeBIgBRAiS+AxYt3nGar15BOVoPAbp1IF+LC6/n7z6QRzV1pTLMLALkMnGcyQPEwJvjbmMx7RV22MYiJGxNrAbgQG8dZp3WoLnOISQMF6peNhFg2skbSiJqo/Buf6cARVMumcVynoYUKmltoLK47DtcdDyoItwgxrgAm5Py6zwGE50Br0I/J+P/nuOf58M84wGW6UMGBswUX5S0XbYDY7YRo/dahkuWu06AjnYGSSxk0/GAPKO+XYocDVNRpGgAg5NGQ6mF0/d4pqGc2j0ZVL0KJphDoJhpx8GZ8hqjt6jtxXANRbjXOX4HKND58vwjgmYvPpiNUqACTfjCMBNmi5tsEVNLMh+l7DO6VDwvdiANnSc4IYOSfAJU17Wa3L68rQYnu/uQ3heOPJzKv9DypxcSGr4fFo3GoZcZVdQQhCJUnPjtU2VChnyt+B12DryOu9cK3BPW2Tb92+7q2y+6DU3NFKXaWLkLIzUJ4/6fjOJ6cy0eSc8UQRAQMIseKHJyTQ86SbHyeTRmhQYgOGIZogtGIIihE2sAsRAkswe9uom633IWYt4dBfybXqq72ANvt69m6rfAiIHMfoqH3C3Lib1doH+LN9iIubQ+Ouw1y8TGANGg/jn5858c5QZzvP4DPD+D3ByjDcxDHasS4HSL36jPsAbbb17M5g5/J3BqPnkqAdABERTs9Ci1TyCNTqZ1e63cZRQj0XKalFXgj2Du01ChAaDe7fa1a99LvQ+Sq1SraKODRKEP/e5lCHpl/Yzlf/d7LtQZ24rqn2gNst69nu7D0ZEzwJnAcrWJnEmgyPKlg0rmSARw9ec2r15SuJHfwEntw7fb1bZyZ6SzeZADH4UFujU5eEzj8v0NJWBP/i8+iskyuSJGGeFb8V5SE6p02OtpudvtatS6BCzDxX8SkXw+FvhzHrQDTFtA2g9za0VVcKRLU+H93aKvcWDf4EUDzKJLdhuJaP7FBY7f/IV1n2U/BQc4SyWfdS88R1DWZvApp54hkteCZqP55Gp212I4Zs5vd7GY3u9nNbnazm93sZje72a1TtvMmfxs7FFyMuLMFsKrdAksZqtb4M+2BQeu6zAnn8BRYEm+EMWQBwoouFLvVdbp3vOhkYdTJWNobroRh5Cyahf8H00+KOtEO12yuTTbZqv+L72d+o1Wzrv77lN+kocM1R+lJMCe/g4lRhUmBuDM/4tUQg+Yuhcm55P865STpiHZWPir9wMQuzPG+PVhI9ovYPDbFu4LvYdKduNVxeH+jsxbD0ukZBV/c3eT2vYVnqYB/Dc/i304Zy3YhPGoPvt9BmaH7TnDEL0OtsRJM0JL3sbnsB5iUoOL35TGF1uK7tTj3Ayvd+EHqZ0kkrl26Vl4DR9fy9xHRzMBIHaDui3+EScA+mEa5n41WD9oFcvNuBEEEapb+6ti98BBqtAXeRWDpu/ARvYdneA9+I/x9ozxmauQK8TnvaEeTXFgAnMHfdkhfXLiOy1cjY/ZE7J4cF5eoi43qpMG36IITbLU+bc738a5fx7h9gncJf5x3J4CCd+gLCwc3PwPHFHJYlIwQQfFIz0cnNnCc/qfIHWjAAzXjQeBh95rk5v81cuIh9aNDPHBYe3CN/GHLd+J7rzxHkF+/TkT87Q6AgmFQDXX1u6yTo6QUUdHNoii6O2AFjkvf4xMb6GYErzw2YxT6L54P9/M2Abjms6jk9ktyBuT3YjzEmKD6qK8OYFr/1UHjLcC16+VE00gCJyFIjFGA+zPmhJpjmYt7YgybEcnRLKI6GBwure/8t6BlGgng8Dz5y4kNHIdnGrbze1u8EA5RcaovxadPWG3rDLUWs3KehXzWoyt5yw3tOwEAsVdNTMjnenN7foBBrgJgUBSdw2X8cSsF9A1yuXa09yuJDe0V95yhleAYG8QW8bxCJj+zmLj69iE+ZXtFHk8GVOgt9HfiVwdw4FncL5o03tqGWsb2JlHKDDx1Qs2x7sxx/Asgar8JcUwCR4ybRwGOQnIeek5s4Lin/oB6rDwbnc3FoO/TBj9hkEvfCYD/1vbdTAccsZIkAYcHQEx2Y0XUt+QwweMMNlFPVN00VidwH64D7QqkAY0ONh04gTu/FGBcpffht++gxvQH0BWKDv/iITryNiNO3z0CPDIKW0lhUPfmUccH+UFu3yAR+cDR3l89zWIT3kE0BTAGcMT9mZuvPfGMGTN/SJm+84ReZgWKmSLiEEd+xy3U1ZfVSbROTCin7yG5aqoTIhlEXpPzuDDpdXLrx5ByZApE5CqtAdLYkkP8z4XT9yWt7t3k1urMbXTO5EsDoCCuFfQd2TPmf5MyS+5En5DQBpHKweJg6Mn2T1xPN7mViA4cdXz85p6kYozEPj7XwZjSccU9XKEKjEXUfB8aaFyWTbUi0LeeO4FzrMo0cS2hcR4JGIfXBI67uIUyfI7OY7FxetfIl+JNDx6T2zBHKIepuAf+Pt9KxdZjhq83WPRyIZJJFqxfTwNOsDzFPOkKHjKURl3xdSk6Dus97hL0p7jPkXEb/2yApVpyLa/cjdoduu0IFPMzU4HjN0FjAocXhC+oz50dGyPHCrbLHzXejTAQ+KwitSuAPVJDc0/I+XUqxHCHt1qTSjTgLDOBIxMR40JPdMw/qfMAxxV6wpThfW0BB/pH6MUjSEqDlSw0TO5j49XYs7bBk9P3XJoJusqiS6igcWm7qTlDR2aS7haYLlOqde7H1+bdp4Nj2y9uIJfHGUwYoqgrDXB0EdQReKbj309wkrAyptMtXVp2q7tkC52+8Ccnpj7t7yN0MFNEi2uWNA04vBiI8Xu/c/kIMkOfaStaPEVMM4Djkd9l+G47omv3QYSyM7BQ0RHiIlfG4felX9kDzwuO4PRoCrlfkpu3WQ/+jc6DvNzuF+ZDkQ//LsEJ1P1BnbDqdQ21f8c4VvBZtzJ0OV0f9Fv3H3WJTa5KjkpWrDt0t9xgy6/lG2n5Ry49Ua+47wks0RRJA4uu33jNo8OQcKJ4Vys6D2jOXfQzTEiYpfUVWVc6FaXeqQOHFXPvhCO+x0/9p+HF15kWOh9v/pT+RbvgKHP5/DgffqBiWNlK2PH5PjhECZyjZx2BJSqI++xKsRgyGN3FG4VDt93AKblPTFgVfAbXCZjbxTNXYP3mqEgFSPt2Fi/AWPxHjIsryM7PT3Hv+zBWbuqef+LWpmbpwuD2ScAxVQNsaOy9svMAx+UbjoE3rWBpgaPrPzwxfBd9Sb/R38VWgpKL1Lbp6WZ9h/Nq2BrjXtFFWP/O8Z1yBPrI30WVHKcvprwgXXmHuHnjU0coyn4klG+V2xgWrYDcn1SKko3i/kfPA3+SWDzEuIS6iPyjzlBHwR38QnJ99T0Y3EefW430w9mndB7gZPhXC0uVYalJkd0VpR7bAf7oSypvUtyJSC83UqM7ujEHyQyMg1cfmaL+BlP+98QN4AsFXmy0235xqgv0BneoQTGTJ4loOrcRnKyM7JYGOGzN1N0Wqt/GIN6S8oBwGXSiUkyvWFZRy8RQVlYWr1yh/3zp+zDHcLH/JIDVp2R+2yeXflPUCXAVF+D8ZejjAjhrXa2uwpmh+RCn3kI/d8hQHV+SY1Y1GQsO4YFl7iJwvZ6CMkFsCcxMoz+5/FcL/YqB42axLGCOjzlecaEjcn2Do92EX8k/AnucLqWunkVwJl7Wfo6V9y3xvELKCF5PZ8F407pecg3Ogwk/+A88/9uCXIFXcd/bqUvRBe1fMJdmmj6oNoDj8L/duVYDF+R9qTxbgeNKs6o6g2u+mpKLaNjM0vNSuJaIGggMxovBiyqGmBX8GNaprTjuFCIXy/NO/xZ8d3XS3qDwqAfXiSKFLhHyYvp/DF0keSEQ4ihfbxsWg60wdmwVR6dvCzjLJrzA7kkLCyK0QxwrJ0HnSiYtqsEdTHS4YYD1Fjd0QUegFLrNX9GP93GPMtxzBz7bi78RBBuoQB9DrUSHQKwrHof+3Y/+vYRn/hjhQxjHAGLGAtvx+7ViHC0WRM943OdfuAcHjyI2zo+KQ/5mLZQIoTMcL+jHuwk9066I9S7euYaY5vImFPHMJNZDMzwr048BFi5n6ClBruKnAeC/irHgY+aNz8I/9zfhv+Ijf+byTjz6oDl1Kk/YQ+LBhGMzHWB0IGGSZPiHdTBoe4F+jUn7IV7EdtyD+9IowkuEz8iniVsibAdiXnC1onCOxPlNwhpjdZIqC4BPcRQqDlhXunAhFrUgZycbINylj4nYOZcWtWAFjQKc4gSiBfI7hqvA4ucuvh/9RbBoABPYf1CInxxHqE9Co/wVnt+BAMrupdI4cBaiHTICK/EsL+KcTTjuxDkAgK9Rc6KaYypE55LBImqdo9JdwV8Lg4oTsXlG2JSyGKnj5ub+FH8ILtw293F4X9J8cwnT1ZHkK3QIUTerFVP2BzBdo86etx7j24BzIYZrxP+7fBzDVy/iAh3+QwDgA0cfOF2XDFRioMzJ5UoSRQRhYnRXYssOp6BnCJ2moE0PugMRvQ7Iv049WtYXT1XmDeDwBFlk9fn45TbuRhiP3tdAEudUHYXGxIlpnFYn9rxvSrG2ZS7/UBo19CDTZG6jE7hSRlGPjtEJSu7G88K4geBIiwlXDXXymhZKp+8LZVwKRYSE01unRRvL50x2KEsRNkbdPFeA45+B9/CmiL7WgzENP5oSpZAsArvB5d2h14TLIa2RB/42Fzijy4h7VACj+goBwnNaMQy4/UhF8Hwhyn+JsBxlPISjXBOTnVhEHZ6XMKddx8Ax5btdDnzSKmBY1VSxB5Mmo/T0dhoC3sV1ua7zLot4lQJc/xARX6WDxuVtY5LAM95FkefdpY8LS4w7xNHWERkE6kvWPdQwH/05mLNEZc21gEYiuhlhOCW/S/F4u0LVYoK5WgGOYVEL7hdBjR3j8LwM1/2H5BDetoEjrZSPK6kQGRj7vwqnaHoQKEGpsG66FnXF+Z+CGq16iFeZ7ArHViOyxWIkQq3mpH2OnqzXFjcdBjhx6oYSX21JRQ5PoaybtyxupCCYHBH+nxC45LKRR9WiabWoaZM27SrgS1iCNh3BT9sd3uKEXCx+42uijCVnt3ruGaXfFTqPM7jFaq5UgkON+DjEMZ3pMcWoDJiouxb3pPPABVnkc5d8bCwCLp/VOmgEl3JYCpyiPDHP5QxTRAR09V0qjlzLrVvgZ0km9MtxblQCJh1wNFM0T1Jn8J8d92KgxLN+4vRvlhM0RS+IK07pqMgIVRMIe2DMnd6nZJi+BgC3sqiIaHV2SKNGtzvwV5zXJDm6cKxGpBTiS+MM9yctrD7pqGbdK107C3FnurHGpes4KSLb4SMGnNB5LcDRoybE87wo/FhnDDlGG3+xSOIu1UNREq1HDAiKpE08S+Vg+Th3j3QWsniALL/2OBo5XESPXHCp0QtG1HFMmMwvb8UUzqnWruIdUmzzxlNiyQzgAHxCoe39jXYmsnmFCGYBTVCSU/tbAIctaiW3drzFM7DNAI7DMumUSGyImOmiKVy+J2SheTWaWluQHAYooNNBR5DAh0QBA4kzyD6wt4SxRepDadwTfmVhxYTOLN7daqiQ/k5M/Uj5rTeu1QhPP7ccyzIAivelKK/m73ikT9HpDYmF95i2C+FkdJc0aatputgrxYTLK1RwEZ0FVsirPueKnwEHJSvSbo8b310HGRnedd8O017PHCT4/GH70QOVNp3BejPkRwGOoZ/w4GN1bJ1z9sBLChuJb1bQKKEySNw7khRjR/CvCrdROI0CHP4uM8QBlqM6PN3YXXzQ0PscFklAWVDg/0i3KAqzP4vA/qS8HcsYS87jCmwGRxov6hmwuNN1ARyrgYH4e5+Sl5XkEDdCsWLC+pbe6f0HbRFVRUzdkqYBAOPb1Tsu9Z2iFgEbjZyecJIJmxf6WvRjarud4h27mnmyRQi/22IhSgWPmYCGnHDfZmEOFRQoE/+7A+AWIaz2UCyNkBqPxkZhRj3sBCkejcGLKuE4SekMmhzrDKxsQ6eaKUQqQ49Jinxw6Ep08Mj8UK6SdVbgBDXxzAARm6EBnOUtQlzsyHam/8cY12YzZMgSAqVy4o2pk67odKn36QYRNRrEayYXygXxvyIXKjntmmsccIyhYRHzJkeSJBTnZXVa4AsOlqRDG8AxlPwwdU9KJcjw5uE+6/F9cwpoMnwbyVHUT7gwjo//xv8LmaWoAifQCufx6gqlTBFQKV3ErgBOKEFdULv5sMAJPCKCPpO5jVNRQBk457YR6uPyP6pFXOv9TCNyQobvihoC7XeifBPAqZaLS5J+owJHmKqLY2Kid6zhJkfcu7UV32E4d59KI+JdKMzj6kKiimtmxuohiEMXt+GD6aXpcEnvRpn4ArzF21N+ey70RWcwZnAZhwIaMyeHgb/VIs6zm8Hpq5J6lidmzQ71/1tKOMcrwoBt/m44AEXSmAIcZyCdszBhWjCSU6R91gE1VhNtArcnKckV0FKTdSNAEmAFaw7VGH6K9JzhI9MsHUjOl4kbHKf7EcTZscHAHYoatQ+SFxgDQCLVoeNDbTKDv9BSyNMvZA49djCN09UdGG2xfFn8cYb4y9f4fZuVh84p7i23STFS31OBIzgS3mHqgngxFs+WtMCReTiyOAc7W02dZirmDByzRTFLPQJhzPD/pk1D0zFpFzArL4lpD231e1j8NxZLSktSJAEfWww52bIaChNpebtWBldov8G5HJZaBaYM7cCq1LYjdY+0LiVNErEQ6NeD2TTzCLhCJgqHCOD40wPHiIzmGglw4na04cYZ/EIzNScF3nqVbFw8V5el16Tp++1G/pFLiZ6Q71Qfj7goAtKmn883x1DuHWqulhEBIAHoDvw5Ddcbp5yncBuN4zh0Q4H/Lo3Don4eg4YXymWmIUD03bsQhqwTYAtKtiwxKzc87YGkIE+f1X/j8D2OqAGPcEBy8QWnZwEUOuTY+JeA7jCtP0puhSP0p8Ov6nC8cdUbl1eJkk1THMThfaWN6O6umgUoZkkwM7iCXgMB2aVHkpnpCnLtL6X+QcC8rjOg3oP1hPyO5TYAOPunXEn6miFq6QVBkNWaLmPSGXpDGlt8qtk26d2yaIt09bYDgP+epNyreop2baHnLUrTB+QPeaKmKT0d6NjI4puMvvwS1zkg5oEjuYiH96MTp2acC6EzYgX1xVOjolWHoYjPioqwCg71Z4egWyORDoswjTOWnioDMgMbteQqbYXxHV6f4GhmNYHOpYl5+upmKPW+YOvXKJ4nV32fNWRIKvN6iSkGzoftHh/2eLtRE6FV4BhjxaE2MeF07FjDTTdwjRar41C1NGrAcZekWhp5kjm9B6x+sWTLGo8pCoq0WYcN0gI7sZNB41TELhmmFRMZsqkc5x1rVIo3CTgefY69DTpk6jKWclEsETUefxHNzPi8U8R+udLFp/mswHFjp+b2+GK6IFpXTHaP9qJCWe3Qb54yV7Qkc6vDZ/pI2soBcnF0dyBmEfFUbqCXouJnbm9jjzeb6t1aKoFFTLPoT5i8pY1i+8WObBxm4g5YgZMcbycWFJSNSl1IelvTrFNyrGSIijv48mH04J8icS7pOinWsbiotEpJYVW8mLoCtUpcXSvAEYtskymaJdVZk/eNCo50gnCcj8Rq4PJaZWAVOC7dxl+6tZ15PX2FJU1cD0f25rbZ4LTk7dSNGDWLjqQDJyZ8Ca0ZBvhzV2i3Uk1HcX4KkUrnFrF2Adk0kfeR3CoQT0klUPUoh7h2x+eRiIo8WuKc7rS0Bt9qolZwRZrIjULTQJLOaalxHEfolsMEZ54vwpwsTmm9Io3XLE6SGfo0jf/rCqkKeNPoNwpwHCqXSSoZpepyruJawYWPa+OwEg7OEwFzip3f2RrXCb1O7c234S0E3Sgq6AjeJfbyPFw/OHBUrEqaruVI5jiiOMgHbWZEuksbrMDxJwFHRC4fojOOoFyT88YVUvxTHJ9WowiDJiFrJ/heOwqpHu/K+LkkUdqM9I5rEQ3D0gDnjtQYM58VdDLiYcRhohbGSetoUriPFTg8Pqk5SBnQW8S4JVdNUk3ROnAsO4eniZ7WxPXMG1cdZ+DwahBSTMy+VIuaMdjCT9H+DnM6L3ufz2hHOi/7D9xBUxxJMUMbVUAfbp3LIRrZpZefUoFjiSXDoJdsOsKa0e+awPGncRDrE5j1v1Cwwx2fzkC9aV73JadJ6HF3zdQFSW2ppvlXNGnCChgTfFhIShNiN4i2oyZ+JUN2lEnvUGuh6b69wE1pTPn3yHfnSROflsJt1Bi01CBQ/r2Mzt8jHLXHT0zTK7ao8nM6UzT/D3Gli3/oUelHpn+WlF/14L80waVOIS5Nb6NE7SxjgiXHqLlUPSf4QvtBA4MHp0q7g/FWgaObdVlX4EzSjpUILtY4cWsRynruUEWKCCuqlfLuBXqJreT3qtenK46KTYXbMoc7AuuNWLcU4OjmZNalgiNTgVP8Ly1gVC1jlQScZZoviSOzOQfLk6amn1fV73A9ZJ8eP+CU3GtUbEkBjk9h50IxbxapukejOYv/poW+p4kY0Lkh6ybeXm34gJ6xmF1Tku+EkYLFmlJqf4p3V4gFLWaojT8pcU1NYDuMY5YOkx7uDi3ENR6lrsh+NfWbsVKU8sZTKoe6lDrRrtBzreyd06yE1KhmbF2fZb3xcyj0rRt8uqHykcio9WomftUg4EkY74wL9ruLulByZLcruF1KAZ7UWttmJAC/3z/SudBdMgIPSYusN55qvtaCUoV/x79TPONxKj74vpEJ6ExOk1bL1HKoSUnlUemDyDYM7FdWpTQcR9Sf3tXqztFsSnUF90sDQoocr4SnBFkRzjmCiORsWKZaDDO0WwOLW+Vi2gqYeWP5l+csqKfA4ocriEDO4oeUEPo1MrdIA47FY68UtM/w3ZTe6RiwxrZZcmfEM4GLFP+ibXO8xxTnk/03ep0A8X4QHJpscWUlXncxOJK4iEuJBnEh05SDhhnAHE7lDKq5QMkBrQkj7IZDtI55OxsOR5lCG7Oabn3pQsdZN3j1KBkooJuUtDJQBnBYf2jdZNpl6bnyGroCneYZJHBqjyiOzFVcIhLd3Gm5jBp4ymLKG19Oj5kLPSa4WQSm8r24LoA5+V8xEtgcyZNPn8jcH8+wNJ7+OyWnaSXmz9Rphx1mW5EZlnrhFsuYYUbmZMDn09RQG2vEt+lFLB0WrqVt5+F/idTa3s7AP2XKvBpp4Eu6rzBGoOb4sd4HiHcm4IotziQ2nppnkdDMnfccnX6gwopRGTOtbKuBIbi8dcMAalO7S1qskyIpKjqDdYHQpiNMW35VyyhNBY4lNF9Y7G75klaz56S5mbk6R0CjYKOxLUZgt1EG2AROcm249OZ+jvtKK/oqY8SF7TnPpW0/369M/dOIMNdFNRNMLv+qtFY9MzDUnPxqVLRI6fYts97T11tk5crvVetdImnhiCJ6+hhzHa5uKZxjyaEc6XJw+LzQlKMkLpZaUhBSir17pS+oraqYDnYSala55Jgs0xfEcWTlR7QvpTt0UDo+UzI9rcARpmgsREe81UjwCaPuG4semTceMMQdXgycgYiljJIurqmllHhblnSrrqu4zLLtirXApBSv3KWRw8bssTlcFGD0xi1+NQtwhPUyTR4NUr5N/SY9cPiYmbQ5GI8NFyfJYHFsmQmc5HAdYYVDAffzlv30GOo3wadTPOwpoPGZkbfu0kuOUj9eEAXcTXnZtLo4dD9FcdvR1Rn+GVqdAWtOvVOtaiOiahtF0e90liNOoVaDBzlCwRWKWarlpFT80QMsMfm7t/PlsQGB0wTcxf8Uef5mUhcrvJ8oEcXTTR1FBY0CHBHGEngpzUJyGp6nPrViZlJReM6daatoPUdBsN6lOqYtTmld0YcBI22oDURQmRIQTw3R0QwLvCjynqDpnOgOhNhIv04a0HgTmukanMn363btKdtBK/16ZUWyZvMlg4d3auvoHBPdMMCb4epxbQ6PtQC3ICFibRMp0a1HPxSaOTjeVI5j6CMiQxE564H+IsWYxRTXsqvx2a8wkbeKWlymqb7AyOrUq+ZYHJ9qAhkS+Hiy8up9Ekoysd7imH+aiDzn1ZDvJfJiUGvbyQsWHMOiRpmShSmeM3C3IhE8aNYY8KhgMZXyDFFoPZDGND8E94lagmTNY8IoVOI4TKiNs/hyWdzdF0+pO6AbB/RCH8mc6wIUc2FuahYJSVhSCgwzNqxx6Tbc4gXGCeOV4DoeU89RTeH6nqGuQJ0ornj09RtMGFFEw2Pa+FsFjlgJ97dq0frKFVy0VdXhSSJtgDLEthV/OUyhkf4AV4slV8SS6ajn2AtQsT5RKUQZV0m58HU4/TWywk3pLcrCcrv0HfnjqYUZ1TwYr9ywlndKczD5NuGZNOLd00qg+JeWAZRb5G4JvBeomr/kMYHjCPVT9Ks3je0w1HHRTcAZYtK2wITbP81Kv1qOa1rgaKIbAwsFFtvWP8enxqilAIe53mdpfIR5Rr1u3aFpmLDVPJxAG2nwwTHC+ezwqGnWyj46Ho3reLi4yK+ORXH1F617xKQkR6nHuCyf1EZppy8PnHkixisFNB51dYq2Wp1Sbz1Q84CLb+jASb9nTcIsEuHRvNB62Sv2+pfsNRRzEvrHZtOh6k+tMWfZeU3d31Qp3KfrFlxVxu1PWKuLWoqNczrCQcvi5ArtMgMjPakkgBNqSVtB0+F/z5JcmA44/P7Zotn2+wlITq5PfiUEyjBHs/8NVUFT59gtVuB4FIep4f+JinrlbW1pwjt4i9QUr9XCZuTyMNdZyv04RF2W5RwlwCzifJUnRUUTS32xdMDxJhR5mkWCTzGBb+jQJCJX8WPGXjkWUcQQ0zTgYAOpw2axonCfUa8gebInVWOxeLF5LxYUwlD9O87A3WJHMEu9aTUrNl25JNWvoRdFVHeCVgsWKsAxNtgt/lwJV3ILDujwKWBZlgoeJwwimck6G+trJbuTinHEU/53h2rFAtE2xymROVj6PX3me1GDOzNQRbOLxxpVwnF7umHAiD/TrWPLTFGzS/Caw2Tfjkdf49btNVXuBeBkLJX34BoE5xUt6LhA28y5P5Y7rXnXi/KhDl8s1YvrU0JvjNVEcbx5eGVBUUE/6kuXXtgxImPJB9rmSFZRxACtvtUhV6Ms9Rw+YJV3zg6mKX+bpnieWA2FtXATTK4jpA7Fuxws/4O8n5rt6DfTyV0qcPytACep8qW6E7VRPdNr3YXbEfibEtExSTprva0ARy0JhWBa1Sr1E1jY3MUNloqdzqR7itoJyyvbEac3VJqs/fr90pQL0xbWrsu2irrWpn5UaaSJGJuIJT2LE3sxuVe3XWjjFOQUuUJvahEuyQGiEoQZTEVsgQMH8+wWG5J1WLGHzNJ6rVplVG7qymbWoFZuKaBRUB7lLmnyHON/8XdUhr6UXtYh/XKiRjQXCRFcx2+Sfk/RH7ZshbAf5I1/akfSGZTw4t+KCGhXKKbFP8XMLdaNEHx8VgxRKPiASMzTk7jYcuhAeSNhBg5ozywKcEjLnvhdUOtX0DpuDuUz43chrf/ad/rnVmKO2mgx57oQh8W/08dfv6YjYB0jeT+EupSYrgIO9pQbAkelVbA4qa8hjgKJUrfSv7dv97flT0juq/YhpT/sTwlD7HrUfIbl1VLED8Ysc0xGkcvfONoZcMupCa6S9ZbnN68TEwYEQcLIxH3Z0XHpt07e/iK4RNREEynPXO4H8VF8dBXj8+JFWGEWy79xDv8vvgfp/7tKkKCGl3RGB+2i7C5B0ULcT++XuH5omdg+3RVaKon7g345V7QvB4OtWI5SDDQn6AU+wD1gLVu+HXvlIKU7iMEPPQulc57QDbh0EiVVE3WUoh/FPoAvhH6EACZJruIArulHX324hh/9Dgjdi/92o1ih6LdG/D9fg79zleD7Yg/uWYTreeRv+XONHOJ6Qy0ljlhUy0CkNZMroJ2Lo0P524nv5LVmWzaUEjWaSxZjUmr9wj2dQY+8Nz8DPncun0/dVrYv7pBFc942PRPvJlN7Pxnae8nAe+Jri2fD/OLYPmOyL58mnjsTz8e6kkPrv+i3PyB+17W9Lg6I4rzdpCM0DeAsgjFIzhExZwKLZeo+sowzfEsBngUQG7M7Tr9hmzxnM/ZcdYr8G8fztGNrxN8znaN8xibkjmosVujX1o+8yW4fEPeV/9a/oyMscMG1rXmPm+6lDuq2won/HaImAcdEtZWlqfch85YfiwnJxH9fBuLPderNn/tTP1cp3Xf8Gf/Ocq2HUhcivmdm0u/V67m0+5+SJgefnyHdvfXnONIsVc6n0t9Dd+3d6OOkU/I1eZ6o/daJx00fO5p5ZL6XHynX1PtgOfq0OTv522Q3u9nNbnazm93sZje72c1udrOb3exmN7vZzW52s1tnbgM3/Jj6bz6fstZa/QDZ652U80WXlPNnrv0GDaq4gHLK8mjQxqtoyM70TtDLN59E/cp6WL53bP4W5W3uToO3Wf0xfb/4gegDU+7GXtTvk7OO+Dl6o1/ZWy6k7Iocyvq0a9pzBuPza9I8E983b/NFdPXmi6kfrsHPl7Up1dE68IsLqP+6XuKYtaEn+tkxG+NmfX4R5WzKxrtIX+royk9OpwHrUx2V2V+cQYM+Oi/tWPRb58Dzpvq9rvmkixifAZ9l0ICP0++P2X3dN+kavP8+b7ceCc/f9cO9k8/pt+774tr8LNwHvt/V663bQQ5Z+11xDs8HtbkxD3JwPpOYf/zbD09Lebar0H++Pn/fb+2pxwc416ID1+7/jHIq7jdfyOahNGj7ZsqtmmE5d9CG8yhvx+/xXTkN2llGg3ZsoZytr1P2toEp183dOpgG7S0HwHqbg1rmoLzd+N22CZZzc7ZlU+4u3G9bGeVWluGaGyhr620YmO+1EzTfxW9+Q7nbyyhv73rKKt9E2RvnppyXs+VflL3dGrIzZOOpeI4NeNbNlFNVRtl83Ia+VL4PMJkvNh8TIm/3ejzrZvQN51XgvJ0ff6Wx71P1HRpUeR/lVZZjXDdS7hZ+9tSabFnld6F/qUUOc6v+APo4ZdHrXz4QY7GRcspnW8ep/IeUu3uDGJ8s3Ct7ywY8x2M08D1rDk3u5+fToD34/ou+rfY9d+PVcszWDbCO8dY8ytmxCWNdjvuUgTZirlh3bsjZfB3l4V3lrLcuPFlbx9EAvPuBmzeC8Fs+lll/2w9zkN/TILyD3K2bMX6fYKH7jQDpMW39Xvs2Jsl96MxeTJTTBEfJqXwD4PivmFR6m7zl2zR4zz9x3nZMLD8mUF8atKUAv8VEwmTP2mpdobO2jcaAJWhQ+aXKwHTDdfHZVuuOxDlVeXgJccouXygGPrv8QfShGoM/pl3PIF5WVS3Av4KydlyE3z+N3/41hRtml29Gv99Iff7yLEykXBq4ZRDobvwdw+9LLecNxWo4aHsDPn8E3Ggw9QflVHy1kI6srRdR7o5DuH8Jxv4KGlj+GCbdm6nnVTyKMU9N987Fs2SVNWJymnn+DPbcqrcpuyyMvvot518FTp9bGcZvnsCCVoDxWI6/D1H21ket9wP3HbSjhQZ8MaB14FRcjXfUgpV/SNLiNAzPEEefbqQBZTMAkqkpC2tWxUT0sYVyN1sLIGZvnY4xiQMsHsreNBl9m4gF0Prba8vBaba3oP9raFDZZMyleymvaif6+wk45fePLXiy1p2D1WkvBvI/eJhFeKhmPPiIpMk5ngbtDuNlLRKAYpbZ902w1i2XYwDrKbvyN9ZB2JYP4MSE+GROXCceMI7fzE4BTk5VDBPnUrF65m0+Cy/4kHix7QPOePw+gWdYDM7wTRqw8UwaUJFGtKnYiH6mVqHhRYHFh2uremIi78FK9hnlJYkIDJzcqgb06RbB4fh8Bt1XWrS2XQUOl8AknC6uxSJNXmVGGk75CICTulHVoMr/4D01gfNVC7FNiJObhmDRasaK3QxgF1nvt+VkvD8AqtxHee+eRAM/+wkNrHgfC8U28T5VkTQX/cre/PPWJZXKa9CnFiGyW8RZACd7G3674ecQ5U4W48bjZXkegJZBxwBVRbABGIcBFXiPG3oLUZ9/OyTptwycXIA664vr6XJ+hoqfyAUcC+/AimnHXmTL2TweiI9gooOjVPxOyKpWIPwaSG/EQ5+dInPm7ngbooF1y4zc8pH4LCr0BQOgm7oCODGA4gbrvbcPwUuI4v5L8WLBqbAC5u3C/xWF7et72elCZMzbhZVn1zuYTA+kyNUSYF9gor7RqtiUU/EPcJX9KdxTl91zdzRgkm1FP1/Hs72KMZnwlcb8qk+ZA/wXC0wVrvc2Xvyv0+qV/D5YRExZ9Xe+IcWubeC2lWvEopG97U2M21oAHBx86xLL+cMAnJwtYYhyq7E4QQ8pH4LzDuH6/04SDXsK4ORUtJ4jk1sJjlOBCVyelfTbEXiHuPfm99CPV3DeP8SCaV3A8gXokoGTUzETfYqA4/wbHPMlXOd5yq/6TpLU4BTAGbje5Pb9xEILDrb1+WMPnGFYHbLKoBtUxCl3fWoN4awtD+HlhEUnU17s9nehO3xkXQ0xgDkATlZVT0V86wo2DjBtm5Wk41wHAneq2gDOUYH71GEgbqbcdT9qd/9zoT/lVo0D3Ye+bsekei+lr6w75Vb9O/3vt5RgUtWgH+l3ihbAgajGL3Xg5hIasBmiyKZrvvK4Cy5cWYA+34VJX0EDt75DObutul122W8B5lTgZFe9jnf2Kfq0AM91AIueB2N+QBhIeEXP3eJJBc7WMO65B5wXOtC2SjzzF9Rv04UpwMkRnLD1bN8BW69Ev1pwrYEpwMmuZLH7KUzk+zDJ8T7Kz7G+h8oxKcCRevF09A+Sx2boq2WrAaLlwlCRPF45EPOyNmUpv/uZEC0HHQ/giMHY9Bw6HU8RU6Q8DU6wHd9VWotCDGRZFytebuUjSYrrIEy0FouewroEy7YsxqUDzoAKHLdOw8ACXJXt39S237qfgusMk5Mbg5gDlj0Iot+gytwkLvi50N9SgL+NOd4eDPz9rRokdOBkbVopRNU+AHWyCHKkja2J2eVjhXiaCw6Zu2UK9MUoJv+ApMnyWFrg5FS9hcm7Vir9VQyC3ejjE0J8EWJUkqGBrZkSOL+BuDYE9xtE/SvcQq+1vFNYPnMOI6oxN8oqS89xsiv5tzlCfLx2y08tYqCc6OPE5O+vGI4kF5uCfsepP4v/kCLY4pvyHrBAZmNRUHUfvh6rANdumXKcgLPxaTx4TIgQyY3lzWv3vIGH24UJtgJycH+scJPxorCKV1YJ07NFFsWAZW+vxOr3mZC7B5YNwouFSFe1R+gg1pXzWiGqsQk4D7JtbtW7mODbxCC1p+XtKEIftlFexVIMOFbC8r9hIMN07fYLk4CzDguAtRKpuB8sMzkVB/Dsi2CaHi0oq3xwKnAqAZzyxzExRwHk+ejviBQza1ZFEJOmfdsY5u64HiDZgZV3tlh9syuwOm9tpsFJYzmw7BFhBUuZvJVvot/vaX/PxhjWCWNMbtWP8Jy8AodSgQNRLbsiIAwn/bak19Fy2S3AHKdspRgLFrtzygakAqe8RQDEImlsHSFAl8zFUnXSVOAMqpwsOE5uxTxhZMjacr3gbOmAw1w/azOL9Wvw3FUQdzdajFl9PzwDff8TDfy4/zHQc8p/j8leLZS6tN/v7gJ0/wGd3EKD92+gvD0Q7ba+RnlbrkhZVaR4l4vvKyA2wdS6B/pF5fa0lrLsSogWO/fTUA0owp+zaxtMp3e3zxfFK2zZk5QHE3ne/nXgaNvBGWenTIzcqg9hrv57klm1F4C3D9/twwtYD3B8jgn9OTjWO5bfM3CuPbATCwX6tQ2cCwaE3H3vpSjf2VC0czb72+1Dy93yDHSzMrr2IFwClVuEhSwvyb+RBU6Yu+O/qQr6zn+gP69oK/0P8f7Giz4zQAbvP0R527wpwLn2wD5Yoea3DWiM/5DqQxiDChAvjOswrs+kACd7e02K1Yulh9z9NeBkrRfGz4Eyn3fwUIqollc1HmNxEO9iE55rPcDFY/JIikiex31jl8gumNMrce6W3+I31kX2mk8hbu7eS/0+Lzr6wGE/zaCqCw7Dlc4U5+TuuxgP1wsTqEta0OjWqpwtmcJEzJS77Xy6II0oxKt+v8oelgmTt6u7uHZ7m7DEoT95e+FMxIrNEynF0QmxZECS1YrFLX4eJpbtmcTzoa8pDtTdPYzzmMPm7rKewzpVTlWNEB3bvVh9drbgjFnoNxtS2CWQ8mzbz4K8n+ocHYrJolrhVIPOkD29aGhF6rYdWbvR951tOw1ZIR9S3QsrP5y96BPT0B3uFAlkIMaCxU2rqAaxEfduy3kqzOI4J9lixpySx5fvp997wGbr+2KnaS73bbtGALluUUx20GZjXNlyaLcTvIkXvut2eyDsZjc6orAfRDDsPt0eCLvZzW52s5vd7GY3u9nNbnazm93sZrdO2P4f6BeHz6oKByYAAAAASUVORK5CYII=";
-    document.getElementById("fitlink-logo-header").src = fitLinkLogoSource;
-    document.getElementById("fitlink-logo-header").style.visibility = "visible";
-    document.getElementById("fitlink-logo-footer").src = fitLinkLogoSource;
     const menuButton = document.getElementById("menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
     menuButton.addEventListener("click", () => {
@@ -606,12 +776,207 @@
     const scannerView = document.getElementById("demo-scanner");
     const resultsView = document.getElementById("demo-results");
     const scanButton = document.getElementById("run-scan");
-    const scanOverlay = document.getElementById("scan-overlay");
-    const scanSuccess = document.getElementById("scan-success");
     const scanStatus = document.getElementById("scan-status");
+    const scanSuccess = document.getElementById("scan-success");
+    const cameraPreview = document.getElementById("camera-preview");
+    const viewfinder = document.getElementById("demo-viewfinder");
+    const cameraMode = document.getElementById("camera-mode");
     const supportOptions = Array.from(fitForm.querySelectorAll('input[name="support"]'));
     const generalFitOption = fitForm.querySelector('input[value="general-fit"]');
+    let activeStream;
     let activeScanTimer;
+
+    const sizeCharts = {
+      tops: [
+        { size: "XS", min: 76, max: 84 },
+        { size: "S", min: 85, max: 94 },
+        { size: "M", min: 95, max: 103 },
+        { size: "L", min: 104, max: 112 },
+        { size: "XL", min: 113, max: 122 }
+      ],
+      bottoms: [
+        { size: "XS", min: 60, max: 68 },
+        { size: "S", min: 69, max: 77 },
+        { size: "M", min: 78, max: 86 },
+        { size: "L", min: 87, max: 96 },
+        { size: "XL", min: 97, max: 106 }
+      ]
+    };
+
+    const catalog = [
+      { name: "Everyday Crew Tee", category: "CLASSIC COTTON", kind: "tee", color: "#1761df", tone: "#dfedff", chart: "tops", cut: "true-to-size", price: "$28", description: "A soft cotton crew with an easy, everyday shape." },
+      { name: "Relaxed Weekend Tee", category: "RELAXED FIT", kind: "tee", color: "#58a4ed", tone: "#eaf5ff", chart: "tops", cut: "oversized", price: "$32", description: "A roomier tee with a little extra ease through the body." },
+      { name: "Everyday Fleece Hoodie", category: "MIDWEIGHT LAYER", kind: "hoodie", color: "#3158b8", tone: "#e5ebfa", chart: "tops", cut: "oversized", price: "$58", description: "A comfortable fleece layer for cool mornings and late nights." },
+      { name: "Move Easy Joggers", category: "SOFT STRETCH", kind: "joggers", color: "#183f82", tone: "#e2efff", chart: "bottoms", cut: "athletic", price: "$46", description: "A tapered pull-on pair made for easy everyday movement." }
+    ];
+
+    const garmentShapes = {
+      tee: '<path d="m222 111 47-31c29 18 73 18 102 0l47 31 88 44-39 66-48-23v163H221V198l-48 23-39-66 88-44Z"/>',
+      hoodie: '<path d="M258 112c0-42 24-68 53-68s53 26 53 68l51 1 91 44-41 68-48-24v163H204V201l-48 24-41-68 91-44 52-1Z"/><path d="M276 87c8-20 20-30 35-30s27 10 35 30l-13 34h-44l-13-34Z" fill="#ffffff" fill-opacity=".26"/><path d="M274 215v55h76v-55M313 127v117" fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="8" stroke-linecap="round"/>',
+      joggers: '<path d="M210 78h206l24 166-48 170H304l9-141h-16l9 141h-88l-48-170 24-166Z"/><path d="M210 111h206M313 113v151" fill="none" stroke="#ffffff" stroke-opacity=".42" stroke-width="8" stroke-linecap="round"/>'
+    };
+
+    function productArtwork(item) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460"><defs><linearGradient id="wash" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${item.tone}"/><stop offset="1" stop-color="#fff"/></linearGradient><linearGradient id="cloth" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${item.color}"/><stop offset="1" stop-color="#0638c8"/></linearGradient><filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="13" flood-color="#17468b" flood-opacity=".18"/></filter></defs><rect width="640" height="460" fill="url(#wash)"/><circle cx="520" cy="74" r="118" fill="#fff" fill-opacity=".45"/><path d="M0 365c120-38 214 27 341 1s200-48 299-18v112H0Z" fill="#fff" fill-opacity=".55"/><ellipse cx="320" cy="383" rx="150" ry="17" fill="#164b91" fill-opacity=".1"/><g filter="url(#shadow)" fill="url(#cloth)" stroke="#fff" stroke-opacity=".28" stroke-width="3">${garmentShapes[item.kind]}</g><path d="M291 147h58" stroke="#fff" stroke-opacity=".38" stroke-width="5" stroke-linecap="round"/></svg>`;
+      return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    }
+
+    function stopCamera() {
+      if (activeStream) {
+        activeStream.getTracks().forEach((track) => track.stop());
+        activeStream = undefined;
+      }
+      cameraPreview.srcObject = null;
+      cameraPreview.classList.remove("is-active");
+      viewfinder.classList.remove("camera-active");
+    }
+
+    async function startCamera() {
+      if (!navigator.mediaDevices || typeof navigator.mediaDevices.getUserMedia !== "function") {
+        cameraMode.textContent = "SAMPLE MODE";
+        document.getElementById("camera-caption").textContent = "Sample scan preview · camera off";
+        scanStatus.textContent = "Camera is unavailable here. Running the sample scan.";
+        return false;
+      }
+
+      try {
+        activeStream = await navigator.mediaDevices.getUserMedia({
+          audio: false,
+          video: { facingMode: "user" }
+        });
+        cameraPreview.srcObject = activeStream;
+        await cameraPreview.play();
+        cameraPreview.classList.add("is-active");
+        viewfinder.classList.add("camera-active");
+        cameraMode.textContent = "CAMERA ON";
+        document.getElementById("camera-caption").textContent = "Live camera preview · video stays on this device";
+        scanStatus.textContent = "Camera ready. Hold a comfortable pose.";
+        return true;
+      } catch (error) {
+        stopCamera();
+        cameraMode.textContent = "SAMPLE MODE";
+        document.getElementById("camera-caption").textContent = "Sample scan preview · camera off";
+        const reason = error instanceof Error ? error.name : "permission unavailable";
+        scanStatus.textContent = `Camera unavailable (${reason}). Running the sample scan instead.`;
+        return false;
+      }
+    }
+
+    function getMeasurements(height) {
+      return {
+        chest: Math.round(height * 0.55),
+        waist: Math.round(height * 0.46),
+        hips: Math.round(height * 0.57),
+        inseam: Math.round(height * 0.46)
+      };
+    }
+
+    function findSize(product, measurements, fitStyle) {
+      const chart = sizeCharts[product.chart];
+      const measurement = product.chart === "tops" ? measurements.chest : measurements.waist;
+      const adjustment = fitStyle === "oversized" ? 1 : fitStyle === "athletic" && product.chart === "tops" ? -1 : 0;
+      const baseIndex = chart.findIndex((entry) => measurement >= entry.min && measurement <= entry.max);
+      const nearestIndex = baseIndex === -1
+        ? chart.reduce((bestIndex, entry, index) => {
+          const bestDistance = Math.abs(measurement - (chart[bestIndex].min + chart[bestIndex].max) / 2);
+          const distance = Math.abs(measurement - (entry.min + entry.max) / 2);
+          return distance < bestDistance ? index : bestIndex;
+        }, 0)
+        : baseIndex;
+      const selectedIndex = Math.max(0, Math.min(chart.length - 1, nearestIndex + adjustment));
+      const selectedSize = chart[selectedIndex];
+      const center = (selectedSize.min + selectedSize.max) / 2;
+      const centerDistance = Math.abs(measurement - center);
+      const styleMatch = product.cut === fitStyle ? 4 : product.cut === "true-to-size" ? 1 : 0;
+      const score = Math.max(80, Math.min(98, Math.round(94 + styleMatch - centerDistance * 0.3 - Math.abs(selectedIndex - nearestIndex) * 4)));
+      return { size: selectedSize.size, score };
+    }
+
+    function renderMeasurements(measurements) {
+      const labels = [
+        ["Chest", measurements.chest],
+        ["Waist", measurements.waist],
+        ["Hips", measurements.hips],
+        ["Inseam", measurements.inseam]
+      ];
+      const container = document.getElementById("measurement-results");
+      container.replaceChildren(...labels.map(([label, value]) => {
+        const card = document.createElement("div");
+        card.className = "rounded-2xl border border-blue-100 bg-white p-4";
+        const name = document.createElement("p");
+        name.className = "text-xs font-semibold uppercase tracking-[.12em] text-slate-500";
+        name.textContent = label;
+        const measurement = document.createElement("p");
+        measurement.className = "mt-2 text-2xl font-bold text-electric";
+        measurement.textContent = `${value} cm`;
+        card.append(name, measurement);
+        return card;
+      }));
+    }
+
+    function renderRecommendations(measurements, fitStyle) {
+      const container = document.getElementById("recommendation-grid");
+      const matches = catalog.map((product) => ({
+        product,
+        match: findSize(product, measurements, fitStyle)
+      })).sort((left, right) => right.match.score - left.match.score);
+      container.replaceChildren(...matches.map(({ product, match }) => {
+        const card = document.createElement("article");
+        card.className = "card-lift product-card rounded-2xl border border-blue-100 bg-white";
+        const image = document.createElement("img");
+        image.className = "product-artwork";
+        image.src = productArtwork(product);
+        image.alt = `Illustration of the ${product.name}`;
+        image.loading = "lazy";
+        const details = document.createElement("div");
+        details.className = "p-4";
+        const meta = document.createElement("div");
+        meta.className = "flex items-center justify-between gap-2";
+        const category = document.createElement("span");
+        category.className = "text-[10px] font-bold tracking-[.1em] text-slate-500";
+        category.textContent = product.category;
+        const score = document.createElement("span");
+        score.className = "product-match shrink-0 px-2.5 py-1 text-[10px] font-bold";
+        score.textContent = `${match.score}% BEST FIT`;
+        meta.append(category, score);
+        const name = document.createElement("h5");
+        name.className = "mt-3 text-base font-bold text-slate-900";
+        name.textContent = product.name;
+        const description = document.createElement("p");
+        description.className = "mt-1 min-h-10 text-sm leading-5 text-slate-600";
+        description.textContent = product.description;
+        const fit = document.createElement("div");
+        fit.className = "mt-4 flex items-center justify-between border-t border-blue-50 pt-3";
+        const size = document.createElement("span");
+        size.className = "text-sm font-semibold text-electric";
+        size.textContent = `Suggested size ${match.size}`;
+        const price = document.createElement("span");
+        price.className = "text-sm font-semibold text-slate-800";
+        price.textContent = product.price;
+        fit.append(size, price);
+        details.append(meta, name, description, fit);
+        card.append(image, details);
+        return card;
+      }));
+    }
+
+    function displayResults(profile) {
+      const measurements = getMeasurements(profile.height);
+      renderMeasurements(measurements);
+      renderRecommendations(measurements, profile.fitStyle);
+      const priorities = profile.supportOptions.length
+        ? profile.supportOptions.map((option) => option.parentElement.querySelector("span").textContent.trim()).join(", ")
+        : "Everyday comfort and your chosen fit preference";
+      document.getElementById("fit-priority").textContent = `Fit priorities: ${priorities} · ${profile.profile} · ${profile.fitStyleLabel}`;
+      scanSuccess.classList.remove("hidden");
+      scanSuccess.classList.add("flex");
+      resultsView.classList.remove("hidden");
+      scannerView.classList.add("hidden");
+      stopCamera();
+      cameraMode.textContent = "SCAN COMPLETE";
+      document.getElementById("camera-caption").textContent = "Preview ended · no video was uploaded";
+      resultsView.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 
     supportOptions.forEach((option) => {
       option.addEventListener("change", () => {
@@ -623,117 +988,61 @@
       });
     });
 
-    const recommendationCopy = {
-      "foot-arch": {
-        tag: "FOR SORE FEET",
-        title: "Orthotic arch-support insoles",
-        description: "An example pair of arch-support insoles to consider for long days in school shoes. Check the fit and product details before buying.",
-        price: "Sample price: $24.99"
-      },
-      "lower-back": {
-        tag: "COMFORT GEAR",
-        title: "Supportive everyday footwear",
-        description: "Cushioned, secure-fitting shoes may be worth exploring for everyday comfort. This demo can’t assess or treat back pain.",
-        price: "Explore everyday footwear"
-      },
-      "knee-pressure": {
-        tag: "COMFORT GEAR",
-        title: "Cushioned daily-wear shoes",
-        description: "You might look for shoes with cushioning and a secure fit for daily wear. Comfort varies, and this isn’t medical advice.",
-        price: "Explore cushioned shoes"
-      },
-      "general-fit": {
-        tag: "GENERAL FIT",
-        title: "Everyday clothes and gear",
-        description: "Look for versatile pieces that suit your style, and check each brand’s size chart before choosing a size.",
-        price: "Browse everyday essentials"
-      }
-    };
-
-    function showRecommendations(selectedSupport) {
-      const style = fitForm.elements.style.value;
-      const profile = fitForm.elements.profile.value;
-      const clothingFits = {
-        "true-to-size": {
-          title: "Try your usual size",
-          description: "A familiar fit is a good place to start. Check the brand’s size chart, since sizing can vary."
-        },
-        oversized: {
-          title: "Try one size up",
-          description: "If you like a roomier streetwear look, try one size above your usual."
-        },
-        athletic: {
-          title: "A closer athletic fit",
-          description: "Try your usual size in an athletic cut if you prefer a closer fit."
-        }
-      };
-      const primarySupport = selectedSupport.includes("foot-arch")
-        ? "foot-arch"
-        : selectedSupport.includes("lower-back")
-          ? "lower-back"
-          : selectedSupport.includes("knee-pressure")
-            ? "knee-pressure"
-            : "general-fit";
-      const support = recommendationCopy[primarySupport];
-
-      document.getElementById("support-tag").textContent = support.tag;
-      document.getElementById("support-title").textContent = support.title;
-      document.getElementById("support-description").textContent = support.description;
-      document.getElementById("support-price").textContent = support.price;
-      document.getElementById("clothing-profile").textContent = `${profile} · ${fitForm.elements.style.selectedOptions[0].textContent}`;
-      document.getElementById("clothing-fit").textContent = clothingFits[style].title;
-      document.getElementById("clothing-description").textContent = clothingFits[style].description;
-
-      const saveStatus = document.getElementById("save-status");
-      const saveButton = document.getElementById("save-recommendation");
-      saveStatus.textContent = "";
-      saveButton.disabled = false;
-      saveButton.innerHTML = '<i data-lucide="shopping-bag" class="h-4 w-4"></i> Save these suggestions';
-      lucide.createIcons();
-      resultsView.classList.remove("hidden");
-      scannerView.classList.add("hidden");
-    }
-
-    fitForm.addEventListener("submit", (event) => {
+    fitForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (activeScanTimer) window.clearTimeout(activeScanTimer);
 
-      const selectedSupport = supportOptions.filter((option) => option.checked).map((option) => option.value);
+      const profile = {
+        fitStyle: document.getElementById("fit-style").value,
+        fitStyleLabel: document.getElementById("fit-style").selectedOptions[0].textContent,
+        profile: document.getElementById("fit-profile").value,
+        height: Number(document.getElementById("fit-height").value),
+        supportOptions: supportOptions.filter((option) => option.checked)
+      };
       scanButton.disabled = true;
-      scanButton.querySelector("span").textContent = "Scanning...";
-      scanStatus.textContent = "Scanning your sample profile...";
-      scanOverlay.classList.remove("hidden");
+      scanButton.querySelector("span").textContent = "Starting camera…";
       scanSuccess.classList.add("hidden");
       scanSuccess.classList.remove("flex");
+      viewfinder.classList.add("is-scanning");
       fitForm.querySelectorAll("input, select").forEach((control) => { control.disabled = true; });
 
+      const hasCamera = await startCamera();
+      scanButton.querySelector("span").textContent = "Scanning…";
+      if (hasCamera) scanStatus.textContent = "Following the scan guide…";
       activeScanTimer = window.setTimeout(() => {
-        scanOverlay.classList.add("hidden");
-        scanSuccess.classList.remove("hidden");
-        scanSuccess.classList.add("flex");
-        showRecommendations(selectedSupport);
+        viewfinder.classList.remove("is-scanning");
+        scanStatus.textContent = "Scan preview complete";
+        displayResults(profile);
         activeScanTimer = undefined;
-      }, 2000);
+      }, 3000);
     });
 
     document.getElementById("rescan-button").addEventListener("click", () => {
+      if (activeScanTimer) window.clearTimeout(activeScanTimer);
+      activeScanTimer = undefined;
+      stopCamera();
       resultsView.classList.add("hidden");
       scannerView.classList.remove("hidden");
-      fitForm.querySelectorAll("input, select").forEach((control) => { control.disabled = false; });
-      scanButton.disabled = false;
-      scanButton.querySelector("span").textContent = "Run 3D Body Scan";
-      scanStatus.textContent = "Ready when you are";
-      scanOverlay.classList.add("hidden");
+      viewfinder.classList.remove("is-scanning");
       scanSuccess.classList.add("hidden");
       scanSuccess.classList.remove("flex");
-      document.getElementById("save-status").textContent = "";
+      fitForm.querySelectorAll("input, select").forEach((control) => { control.disabled = false; });
+      scanButton.disabled = false;
+      scanButton.querySelector("span").textContent = "Start Body Scan";
+      scanStatus.textContent = "Ready when you are";
+      cameraMode.textContent = "READY";
+      document.getElementById("camera-caption").textContent = "Camera preview begins when you scan";
     });
 
-    document.getElementById("save-recommendation").addEventListener("click", (event) => {
-      event.currentTarget.disabled = true;
-      event.currentTarget.textContent = "Saved for this demo";
-      document.getElementById("save-status").textContent = "Saved for this session. Nothing was added to a real cart or profile.";
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && activeStream) {
+        stopCamera();
+        cameraMode.textContent = "CAMERA PAUSED";
+        document.getElementById("camera-caption").textContent = "Camera paused · preview stopped";
+        scanStatus.textContent = "Camera paused while this tab is in the background.";
+      }
     });
+    window.addEventListener("pagehide", stopCamera);
   </script>
 </body>
 </html>
