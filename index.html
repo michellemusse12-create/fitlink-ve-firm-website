@@ -196,6 +196,8 @@
     .wave-divider--blue .wave-fill { fill: currentColor; }
     .brand-mark { flex: none; color: var(--electric); }
     .brand-mark text { fill: currentColor; }
+    .fitlink-logo { display: block; width: clamp(88px, 10vw, 112px); height: 72px; }
+    .fitlink-logo-footer { width: 176px; height: 118px; }
     .contact-icon {
       border-radius: 9999px;
       background: var(--electric);
@@ -231,17 +233,21 @@
   </style>
 </head>
 <body>
+  <svg aria-hidden="true" class="hidden">
+    <symbol id="fitlink-brand" viewBox="0 0 1024 683">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="24">
+        <path d="M383 114V78a29 29 0 0 1 29-29h63M768 114V78a29 29 0 0 0-29-29h-63M383 211v36a29 29 0 0 0 29 29h63M768 211v36a29 29 0 0 1-29 29h-63"/>
+      </g>
+      <path fill="currentColor" d="M422 239 497 104c19-35 47-53 89-53h147c-23 42-46 72-82 72H552c-17 0-29 8-38 24l-51 92Z"/>
+      <path fill="currentColor" d="M555 204c18-33 42-49 76-49h91c-22 40-44 66-80 66h-111Z"/>
+      <text x="512" y="449" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="185" font-style="italic" font-weight="900" letter-spacing="-13">FitLink</text>
+      <text x="512" y="551" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="800" letter-spacing="17">YOUR SIZE, SIMPLIFIED.</text>
+    </symbol>
+  </svg>
   <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/60 bg-paper/75 backdrop-blur-xl">
     <nav class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
       <a href="#home" class="group flex items-center gap-2.5" aria-label="FitLink home">
-        <svg id="fitlink-logo-header" class="brand-mark h-14 w-[190px] transition-transform group-hover:scale-[1.02]" viewBox="0 0 360 112" role="img" aria-label="FitLink — Your Size, Simplified">
-          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="8">
-            <path d="M25 25V17a8 8 0 0 1 8-8h14M82 25V17a8 8 0 0 0-8-8H60M25 68v8a8 8 0 0 0 8 8h14M82 68v8a8 8 0 0 1-8 8H60"/>
-          </g>
-          <path fill="currentColor" d="m25 64 11-27c4-9 10-14 20-14h20L66 38H53l-4 8h25L67 59H44l-2 5Z"/>
-          <text x="100" y="65" font-family="DM Sans, sans-serif" font-size="55" font-style="italic" font-weight="800" letter-spacing="-3">FitLink</text>
-          <text x="104" y="91" font-family="DM Sans, sans-serif" font-size="10" font-weight="800" letter-spacing="3.3">YOUR SIZE, SIMPLIFIED.</text>
-        </svg>
+        <svg id="fitlink-logo-header" class="brand-mark fitlink-logo transition-transform group-hover:scale-[1.02]" role="img" aria-label="FitLink — Your Size, Simplified"><use href="#fitlink-brand"></use></svg>
       </a>
 
       <div class="hidden items-center gap-9 md:flex">
@@ -501,7 +507,9 @@
               <div class="scan-laser"></div>
               <svg id="scan-silhouette" class="relative z-[2] h-64 w-40 opacity-75 drop-shadow-[0_8px_24px_rgba(6,73,245,.15)] transition-opacity sm:h-72 sm:w-44" viewBox="0 0 220 380" fill="none" aria-hidden="true">
                 <circle cx="110" cy="48" r="25" fill="#d9ecff" stroke="#4b9af7" stroke-width="2"/>
-                <path d="M75 92C84 81 95 76 110 76c15 0 26 5 35 16l21 67c4 12-3 22-15 23l-10-3 5 61 12 108c1 11-7 19-17 19h-11l-20-116-20 116H78c-10 0-17-8-16-19l12-108 5-61-10 3c-12-1-19-11-15-23l21-67Z" fill="#a5d4ff" fill-opacity=".42" stroke="#438ff1" stroke-width="2"/>
+                <path d="M78 96C86 83 96 78 110 78s24 5 32 18l13 55c3 11-3 19-13 22l-5 2 8 65 12 108c1 11-7 19-17 19h-11l-19-116-20 116H78c-10 0-17-8-16-19l12-108 8-65-5-2c-10-3-16-11-13-22l14-55Z" fill="#a5d4ff" fill-opacity=".42" stroke="#438ff1" stroke-width="2"/>
+                <path d="M77 98c-7 2-12 8-15 17l-18 48c-4 11 1 21 11 25l7 3-25 55c-5 10-1 20 8 24l7 3c9 4 17 0 21-9l24-52 5-32-14-7 8-30-5-36Z" fill="#a5d4ff" fill-opacity=".42" stroke="#438ff1" stroke-width="2"/>
+                <path d="M143 98c7 2 12 8 15 17l18 48c4 11-1 21-11 25l-7 3 25 55c5 10 1 20-8 24l-7 3c-9 4-17 0-21-9l-24-52-5-32 14-7-8-30 5-36Z" fill="#a5d4ff" fill-opacity=".42" stroke="#438ff1" stroke-width="2"/>
                 <path d="M110 77v173M71 170l38 10 40-10M76 237h68" stroke="#0649f5" stroke-opacity=".7" stroke-width="1.5" stroke-dasharray="4 5"/>
                 <circle cx="110" cy="180" r="4" fill="#0649f5"/><circle cx="76" cy="237" r="4" fill="#438ff1"/><circle cx="144" cy="237" r="4" fill="#438ff1"/>
               </svg>
@@ -621,14 +629,7 @@
     <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[1fr_1.4fr] md:pb-16 md:pt-20">
       <div>
         <a href="#home" class="inline-flex items-center gap-2.5" aria-label="FitLink home">
-          <svg id="fitlink-logo-footer" class="brand-mark h-14 w-[190px]" viewBox="0 0 360 112" role="img" aria-label="FitLink — Your Size, Simplified">
-            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="8">
-              <path d="M25 25V17a8 8 0 0 1 8-8h14M82 25V17a8 8 0 0 0-8-8H60M25 68v8a8 8 0 0 0 8 8h14M82 68v8a8 8 0 0 1-8 8H60"/>
-            </g>
-            <path fill="currentColor" d="m25 64 11-27c4-9 10-14 20-14h20L66 38H53l-4 8h25L67 59H44l-2 5Z"/>
-            <text x="100" y="65" font-family="DM Sans, sans-serif" font-size="55" font-style="italic" font-weight="800" letter-spacing="-3">FitLink</text>
-            <text x="104" y="91" font-family="DM Sans, sans-serif" font-size="10" font-weight="800" letter-spacing="3.3">YOUR SIZE, SIMPLIFIED.</text>
-          </svg>
+          <svg id="fitlink-logo-footer" class="brand-mark fitlink-logo fitlink-logo-footer" role="img" aria-label="FitLink — Your Size, Simplified"><use href="#fitlink-brand"></use></svg>
         </a>
         <p class="mt-4 max-w-xs text-sm leading-6 text-slate-500">Your Size, Simplified. Clothes and gear that feel more like you.</p>
       </div>
